@@ -37,7 +37,7 @@ public class PickableObject : InteractableObject {
 		switch (active) 
 		{
 		case true: // We picked it up
-			handPosition = Camera.main.transform.position + new Vector3 (0, 0, distanceFromCamera); // Where are the hands at
+			handPosition = Camera.main.transform.position + Camera.main.transform.forward * distanceFromCamera; // Where are the hands at
 			transform.LookAt (handPosition); // Look at the hands
 			rb.useGravity = false; // Don't use gravity
 

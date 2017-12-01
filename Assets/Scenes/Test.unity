@@ -413,7 +413,7 @@ MonoBehaviour:
   activationDuration: 4
   hitDuration: 0
   active: 1
-  distanceFromCamera: 1
+  distanceFromCamera: 3
 --- !u!23 &1504262363
 MeshRenderer:
   m_ObjectHideFlags: 0
