@@ -9,9 +9,9 @@ public class Gaze : MonoBehaviour
     public float updateRate;
     public Image fillMeter;
 
+    [HideInInspector] public RaycastHit gazeHit;
+
     private Coroutine gazeUpdate;
-    private RaycastHit gazeHit;
-    public float hitDuration;
 
     public InteractableObject hitObject;
     public InteractableObject prevObject;
@@ -54,20 +54,12 @@ public class Gaze : MonoBehaviour
         {
             if (hitObject && hitObject == prevObject)
             {
-                hitDuration += Time.deltaTime;
-                if (hitDuration >= hitObject.activationDuration)
+                hitObject.HitDuration += Time.deltaTime;
+                if (hitObject.HitDuration >= hitObject.activationDuration)
                 {
                     hitObject.IsActivated();
                 }
             }
-            else
-            {
-                hitDuration -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            hitDuration = 0;
         }
     }
 }
