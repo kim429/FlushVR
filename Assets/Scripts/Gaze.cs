@@ -12,9 +12,8 @@ public class Gaze : MonoBehaviour
     [HideInInspector] public RaycastHit gazeHit;
 
     private Coroutine gazeUpdate;
-
-    public InteractableObject hitObject;
-    public InteractableObject prevObject;
+    private InteractableObject hitObject;
+    private InteractableObject prevObject;
 
     public void Start()
     {
