@@ -8,12 +8,13 @@ public abstract class InteractableObject : MonoBehaviour {
 	[Tooltip("How long have we looked at the object")]
 	public float hitDuration;
 
-	// This will be set to "True" when the "IsActivated" is called
-	protected bool active = true;
+	[Tooltip("This will be set to \"True\" when the \"IsActivated\" is called")]
+	[SerializeField] protected bool active = true;
 
 	// This method will be called from the Gaze Interections script
 	public abstract void IsActivated ();
 
+	// This will increase when we are looking at the object
     public float HitDuration
     {
         get

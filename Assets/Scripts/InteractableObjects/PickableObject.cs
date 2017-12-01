@@ -32,9 +32,10 @@ public class PickableObject : InteractableObject {
 		switch (active) {
 		case true:
 			transform.LookAt (hands.position);
-			if (Vector3.Distance(transform.position, hands.position ) >= 2f)
+			rb.useGravity = false;
+			if (Vector3.Distance(transform.position, hands.position ) >= 0.2f)
 			{
-				rb.AddForce (transform.forward * 50);
+				rb.velocity = (transform.forward * Vector3.Distance(transform.position, hands.position) * 4);
 			} 
 			else 
 			{
@@ -43,6 +44,7 @@ public class PickableObject : InteractableObject {
 			}
 			break;
 		case false:
+			rb.useGravity = true;
 			break;
 		}
 	}
