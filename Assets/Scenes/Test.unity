@@ -413,8 +413,7 @@ MonoBehaviour:
   activationDuration: 4
   hitDuration: 0
   active: 1
-  distanceFromCamera: 10
-  hands: {fileID: 1603583820}
+  distanceFromCamera: 1
 --- !u!23 &1504262363
 MeshRenderer:
   m_ObjectHideFlags: 0

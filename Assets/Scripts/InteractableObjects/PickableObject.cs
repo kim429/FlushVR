@@ -7,44 +7,53 @@ public class PickableObject : InteractableObject {
 	[Tooltip("When we pick up the object, how far away from the camera should we hold it?")]
 	[SerializeField]
 	private float distanceFromCamera = 10f;
+
+	// Where will our hands be
+	Vector3 handPosition;
+	// our rigidbody
 	Rigidbody rb;
 
-	[SerializeField] private Transform hands;
-
-	private void Start ()
+	private void Awake ()
 	{
-		rb = GetComponent<Rigidbody> ();
+		rb = GetComponent<Rigidbody> (); // Get the Rigidbody component
 	}
 
+	// Every fixed framerate
 	private void FixedUpdate ()
 	{
-		PickableTick ();
+		Grabbing (); // Grabbing the object
 	}
 
 	// This method is called by the gaze control
 	public override void IsActivated ()
 	{
-		active = true;
+		active = true; // We picked it up
 	}
 
-	void PickableTick ()
+	// Grabbing the object
+	void Grabbing ()
 	{
-		switch (active) {
-		case true:
-			transform.LookAt (hands.position);
-			rb.useGravity = false;
-			if (Vector3.Distance(transform.position, hands.position ) >= 0.2f)
+		// Did we pick it up or not
+		switch (active) 
+		{
+		case true: // We picked it up
+			handPosition = Camera.main.transform.position + new Vector3 (0, 0, distanceFromCamera); // Where are the hands at
+			transform.LookAt (handPosition); // Look at the hands
+			rb.useGravity = false; // Don't use gravity
+
+			// Are we 2.0F units or further away from the hands
+			if (Vector3.Distance(transform.position, handPosition ) >= 0.2f)
 			{
-				rb.velocity = (transform.forward * Vector3.Distance(transform.position, hands.position) * 4);
+				rb.velocity = (transform.forward * Vector3.Distance(transform.position, handPosition) * 4); // Move towards the hands
 			} 
-			else 
+			else // Are we closer than 0.2F units away from the hands
 			{
-				rb.velocity = new Vector3 (0,0,0);
-				rb.angularVelocity = new Vector3 (0, 0, 0);
+				rb.velocity = new Vector3 (0,0,0); // Remove the velocity
+				rb.angularVelocity = new Vector3 (0, 0, 0); // Remove the angular velocity
 			}
 			break;
-		case false:
-			rb.useGravity = true;
+		case false: // We didn't pick it up
+			rb.useGravity = true; // Use gravity
 			break;
 		}
 	}

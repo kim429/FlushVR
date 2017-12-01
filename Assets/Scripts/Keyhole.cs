@@ -2,6 +2,7 @@
 
 public class Keyhole : MonoBehaviour {
 
+	// Open the door if the key enters the keyhole
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.transform.name == "key") 
