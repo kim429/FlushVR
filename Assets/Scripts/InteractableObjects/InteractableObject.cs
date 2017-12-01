@@ -14,7 +14,30 @@ public abstract class InteractableObject : MonoBehaviour {
 	// This method will be called from the Gaze Interections script
 	public abstract void IsActivated ();
 
-	// This will increase when we are looking at the object
+    private GazeMeter gazeMeter;
+
+    public void Start()
+    {
+        GazeMeter meter = Instantiate(UI.current.gazeMeterPrefab, UI.current.canvas.transform);
+        gazeMeter = meter;
+        meter.iObject = this;
+    }
+
+    public void Update()
+    {
+        UpdateGazeMeter();
+    }
+
+    private void UpdateGazeMeter()
+    {
+        gazeMeter.fillImage.fillAmount = hitDuration / activationDuration;
+        if (!Gaze.controller.IsGazingAt(this))
+        {
+            hitDuration -= Time.deltaTime * 2;
+        }
+    }
+
+    // This will increase when we are looking at the object
     public float HitDuration
     {
         get
@@ -24,17 +47,17 @@ public abstract class InteractableObject : MonoBehaviour {
 
         set
         {
-            if (hitDuration + value > activationDuration)
+            if (value > activationDuration)
             {
                 hitDuration = activationDuration;
             }
-            else if (hitDuration + value < 0)
+            else if (value < 0)
             {
                 hitDuration = 0;
             }
             else
             {
-                hitDuration += value;
+                hitDuration = value;
             }
         }
     }
