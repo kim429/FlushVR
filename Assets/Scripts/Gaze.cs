@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Gaze : MonoBehaviour
-{
+public class Gaze : MonoBehaviour {
+    public static Gaze controller;
+
     public float gazeRange;
     public float updateRate;
     public Image fillMeter;
@@ -12,9 +13,13 @@ public class Gaze : MonoBehaviour
     [HideInInspector] public RaycastHit gazeHit;
 
     private Coroutine gazeUpdate;
+    private InteractableObject hitObject;
+    private InteractableObject prevObject;
 
-    public InteractableObject hitObject;
-    public InteractableObject prevObject;
+    public void Awake()
+    {
+        controller = this;
+    }
 
     public void Start()
     {
@@ -52,7 +57,7 @@ public class Gaze : MonoBehaviour
     {
         if (prevObject)
         {
-            if (hitObject && hitObject == prevObject)
+            if (IsGazingAt(prevObject))
             {
                 hitObject.HitDuration += Time.deltaTime;
                 if (hitObject.HitDuration >= hitObject.activationDuration)
@@ -60,6 +65,18 @@ public class Gaze : MonoBehaviour
                     hitObject.IsActivated();
                 }
             }
+        }
+    }
+
+    public bool IsGazingAt(InteractableObject iObject)
+    {
+        if (hitObject && hitObject == iObject)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
