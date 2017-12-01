@@ -1,19 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Gaze : MonoBehaviour {
+public class Gaze : MonoBehaviour
+{
     public float gazeRange;
     public float updateRate;
+    public Image fillMeter;
 
     private Coroutine gazeUpdate;
     private RaycastHit gazeHit;
-    private GameObject hitObject;
-    private float hitDuration;
+    public float hitDuration;
+
+    public InteractableObject hitObject;
+    public InteractableObject prevObject;
 
     public void Start()
     {
         gazeUpdate = StartCoroutine(GazeUpdate());
+    }
+
+    private void Update()
+    {
+        GazeActivate();
     }
 
     public IEnumerator GazeUpdate()
@@ -29,14 +39,35 @@ public class Gaze : MonoBehaviour {
     {
         if (Physics.Raycast(transform.position, transform.forward, out gazeHit))
         {
-            if (gazeHit.transform.gameObject == hitObject)
+            hitObject = gazeHit.transform.GetComponent<InteractableObject>();
+            prevObject = hitObject;
+        }
+        else
+        {
+            hitObject = null;
+        }
+    }
+
+    public void GazeActivate()
+    {
+        if (prevObject)
+        {
+            if (hitObject && hitObject == prevObject)
             {
-                hitDuration += elapsedTime;
+                hitDuration += Time.deltaTime;
+                if (hitDuration >= hitObject.activationDuration)
+                {
+                    hitObject.IsActivated();
+                }
             }
             else
             {
-                hitObject = gazeHit.transform.gameObject;
+                hitDuration -= Time.deltaTime;
             }
+        }
+        else
+        {
+            hitDuration = 0;
         }
     }
 }
