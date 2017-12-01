@@ -9,6 +9,8 @@ public class PickableObject : InteractableObject {
 	private float distanceFromCamera = 10f;
 	Rigidbody rb;
 
+	[SerializeField] private Transform hands;
+
 	private void Start ()
 	{
 		rb = GetComponent<Rigidbody> ();
@@ -29,18 +31,18 @@ public class PickableObject : InteractableObject {
 	{
 		switch (active) {
 		case true:
-			transform.LookAt (Camera.main.GetComponentInChildren<Transform>().position);
-			if (Vector3.Distance(transform.position, Camera.main.GetComponentInChildren<Transform>().position ) >= 0.5f)
+			transform.LookAt (hands.position);
+			if (Vector3.Distance(transform.position, hands.position ) >= 2f)
 			{
-				rb.AddForce (transform.forward * 5);
+				rb.AddForce (transform.forward * 50);
 			} 
 			else 
 			{
 				rb.velocity = new Vector3 (0,0,0);
+				rb.angularVelocity = new Vector3 (0, 0, 0);
 			}
 			break;
 		case false:
-			transform.parent = null;
 			break;
 		}
 	}
