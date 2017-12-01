@@ -16,7 +16,7 @@ public class Gaze : MonoBehaviour
 
     public void Start()
     {
-        gazeUpdate = StartCoroutine(GazeUpdate());
+        gazeUpdate = StartCoroutine(GazeUpdate());/////
     }
 
     public IEnumerator GazeUpdate()
