@@ -18,9 +18,9 @@ public abstract class InteractableObject : MonoBehaviour {
 
     public void Start()
     {
-        GazeMeter meter = Instantiate(UI.current.gazeMeterPrefab, UI.current.canvas.transform);
-        gazeMeter = meter;
-        meter.iObject = this;
+        //GazeMeter meter = Instantiate(UI.current.gazeMeterPrefab, UI.current.canvas.transform);
+       // gazeMeter = meter;
+       // meter.iObject = this;
     }
 
     public void Update()
@@ -30,7 +30,7 @@ public abstract class InteractableObject : MonoBehaviour {
 
     private void UpdateGazeMeter()
     {
-        gazeMeter.fillImage.fillAmount = hitDuration / activationDuration;
+//        gazeMeter.fillImage.fillAmount = hitDuration / activationDuration;
         if (!Gaze.controller.IsGazingAt(this))
         {
             hitDuration -= Time.deltaTime * 2;

@@ -1,18 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PickableObject : InteractableObject {
 
+	#region Variables
 	[Tooltip("When we pick up the object, how far away from the camera should we hold it?")]
 	[SerializeField]
 	private float distanceFromCamera = 10f;
+
+	[Tooltip("Drag the Main Camera in here")]
+	[SerializeField]
+	private Camera mainCamera = null;
+
+	// Distance between this GameObject and the hands of the player
+	private float dist;
 
 	// Where will our hands be
 	Vector3 handPosition;
 	// our rigidbody
 	Rigidbody rb;
+	#endregion
 
+	// Use this for getting components
 	private void Awake ()
 	{
 		rb = GetComponent<Rigidbody> (); // Get the Rigidbody component
@@ -37,14 +45,16 @@ public class PickableObject : InteractableObject {
 		switch (active) 
 		{
 		case true: // We picked it up
-			handPosition = Camera.main.transform.position + Camera.main.transform.forward * distanceFromCamera; // Where are the hands at
+			handPosition = mainCamera.transform.position + mainCamera.transform.forward * distanceFromCamera; // Where are the hands at
 			transform.LookAt (handPosition); // Look at the hands
 			rb.useGravity = false; // Don't use gravity
+		
+			dist = Vector3.Distance (transform.position, handPosition); // Distance between this object and the hands of the player
 
 			// Are we 2.0F units or further away from the hands
-			if (Vector3.Distance(transform.position, handPosition ) >= 0.2f)
+			if (dist >= 0.2f)
 			{
-				rb.velocity = (transform.forward * Vector3.Distance(transform.position, handPosition) * 4); // Move towards the hands
+				rb.velocity = (transform.forward * dist * 4); // Move towards the hands
 			} 
 			else // Are we closer than 0.2F units away from the hands
 			{
