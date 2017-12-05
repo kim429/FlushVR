@@ -7,11 +7,11 @@ public class Gaze : MonoBehaviour {
     public static Gaze controller;
     public static Camera mainCamera;
 
+    public LayerMask gazeMask;
     public float gazeRange;
     public float updateRate;
 
-    [HideInInspector] public RaycastHit gazeHit;
-
+    private RaycastHit gazeHit;
     private Coroutine gazeUpdate;
     private InteractableObject hitObject;
     private InteractableObject prevObject;
@@ -43,7 +43,7 @@ public class Gaze : MonoBehaviour {
 
     public void GazeRaycast(float elapsedTime)
     {
-        if (Physics.Raycast(transform.position, transform.forward, out gazeHit))
+        if (Physics.Raycast(transform.position, transform.forward, out gazeHit, gazeRange, gazeMask))
         {
             hitObject = gazeHit.transform.GetComponent<InteractableObject>();
             prevObject = hitObject;
