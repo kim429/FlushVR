@@ -3,57 +3,51 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Gaze : MonoBehaviour {
-	#region Variables
-	// Public variables
+	// Static Variables
     public static Gaze controller;
     public static Camera mainCamera;
 
-    public LayerMask gazeMask;
-    public float gazeRange;
-    public float updateRate;
+    // Private variables visible in the inspector
+    [SerializeField] private LayerMask gazeMask;
+    [SerializeField] private float gazeRange;
+    [SerializeField] private float updateRate;
 
-<<<<<<< HEAD
+
+    // Private Variables hidden in the inspector
     private RaycastHit gazeHit;
-=======
-    [HideInInspector] public RaycastHit gazeHit;
-
-	// Private variables
->>>>>>> c434518971072e32e6499dadec123114f7fefc0b
-    private Coroutine gazeUpdate;
     private InteractableObject hitObject;
     private InteractableObject prevObject;
-	#endregion
 
-	// Before the game starts
+    // Is called when the script instance is being loaded
     public void Awake()
     {
         controller = this;
     }
 
-	// When the object is enabled
+    // Is called on the frame when a script is enabled just before any of the Update methods is called the first time
     public void Start()
     {
-        gazeUpdate = StartCoroutine(GazeUpdate());
+        StartCoroutine(GazeUpdate());
         mainCamera = Camera.main;
     }
 
-	// Called every frame
+    // Is called every frame, if the MonoBehaviour is enabled
     private void Update()
     {
         GazeActivate();
     }
 
-	// Also called every frame
+	// Is called at the rate of rateUpdate
     public IEnumerator GazeUpdate()
     {
-        while (true) // Keeps on going
+        while (true)
         {
             GazeRaycast(updateRate);
             yield return new WaitForSeconds(updateRate);
         }
     }
 
-	// Get a hitObject
+	// Casts a raycast from the camera and sets hitObject
     public void GazeRaycast(float elapsedTime)
     {
         if (Physics.Raycast(transform.position, transform.forward, out gazeHit, gazeRange, gazeMask))
@@ -67,7 +61,7 @@ public class Gaze : MonoBehaviour {
         }
     }
 
-	// Activate the hitObject when we looked at it long enough
+	// Call IsActivated() on the IObject that is being gazed at after the duration
     public void GazeActivate()
     {
 		if (prevObject && IsGazingAt(prevObject))
@@ -80,7 +74,7 @@ public class Gaze : MonoBehaviour {
          }
     }
 
-	// Checks if the object we were looking at was a interactable object
+	// Returns true when the IObject is being looked at
     public bool IsGazingAt(InteractableObject iObject)
     {
         if (hitObject && hitObject == iObject)
