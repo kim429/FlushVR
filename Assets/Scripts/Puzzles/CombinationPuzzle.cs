@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CombinationPuzzle : MonoBehaviour {
 
@@ -14,21 +12,24 @@ public class CombinationPuzzle : MonoBehaviour {
 	}
 
 	// Returns true if the input combination is the same as the correct combination
-	private bool CorrectCombination ()
+	private void CorrectCombination ()
 	{
 		if (inputCombinationString == rightCombinationString) 
 		{
-			return true;
+			combination.unlocked = true;
 		}
 
-		return false;
+		if (combination.unlocked) 
+		{
+			print ("We unlocked this");
+		}
 	}
 
 	// Add a charachter from another script
 	public static void AddToCombination (char myInput)
 	{
 		combination.inputCombinationString += myInput;
-		combination.unlocked = combination.CorrectCombination ();
+		combination.CorrectCombination ();
 	}
 
 	// Clears the combination

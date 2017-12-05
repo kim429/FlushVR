@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationDuration: 4
   hitDuration: 0
-  active: 1
+  active: 0
   character: 111
   isClear: 0
 --- !u!23 &178116450
@@ -684,7 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationDuration: 4
   hitDuration: 0
-  active: 1
+  active: 0
   character: 110
   isClear: 0
 --- !u!23 &1001005782
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationDuration: 4
   hitDuration: 0
-  active: 1
+  active: 0
   character: 101
   isClear: 0
 --- !u!23 &1234975537
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationDuration: 4
   hitDuration: 0
-  active: 1
+  active: 0
   character: 108
   isClear: 0
 --- !u!23 &1745807904
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationDuration: 4
   hitDuration: 0
-  active: 1
+  active: 0
   character: 32
   isClear: 1
 --- !u!23 &1839268793
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationDuration: 4
   hitDuration: 0
-  active: 1
+  active: 0
   character: 72
   isClear: 0
 --- !u!23 &1864059130

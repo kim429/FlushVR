@@ -8,9 +8,9 @@ public class Gaze : MonoBehaviour {
     public static Camera mainCamera;
 
     // Private variables visible in the inspector
-    [SerializeField] private LayerMask gazeMask;
-    [SerializeField] private float gazeRange;
-    [SerializeField] private float updateRate;
+	[SerializeField] private LayerMask gazeMask = 8;
+    [SerializeField] private float gazeRange = 5F;
+    [SerializeField] private float updateRate = 0.1F;
 
 
     // Private Variables hidden in the inspector
