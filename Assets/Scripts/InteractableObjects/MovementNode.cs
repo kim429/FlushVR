@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MovementNode : InteractableObject {
+	#region Variables
+	[Tooltip("Our Player")]
+    [SerializeField]
+	private GameObject player = null;
+	[SerializeField]
+	private float speed = 0.8f;
+	#endregion
 
-    [Header("Variables")]
-    public GameObject player;
-
+	// Called from the Gaze script
    public override void IsActivated()
     {
-        //moving player
-        player.transform.position = transform.position;
-
+		active = true;
     }
+
+	// Every 0.1F secondes
+	public override void Update ()
+	{
+		player.transform.Translate(transform.position * speed * Time.deltaTime);
+	}
 }
