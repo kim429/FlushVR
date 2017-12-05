@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Gaze : MonoBehaviour {
     public static Gaze controller;
+    public static Camera mainCamera;
 
     public float gazeRange;
     public float updateRate;
-    public Image fillMeter;
 
     [HideInInspector] public RaycastHit gazeHit;
 
@@ -24,6 +24,7 @@ public class Gaze : MonoBehaviour {
     public void Start()
     {
         gazeUpdate = StartCoroutine(GazeUpdate());
+        mainCamera = Camera.main;
     }
 
     private void Update()

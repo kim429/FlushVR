@@ -7,10 +7,6 @@ public class PickableObject : InteractableObject {
 	[SerializeField]
 	private float distanceFromCamera = 10f;
 
-	[Tooltip("Drag the Main Camera in here")]
-	[SerializeField]
-	private Camera mainCamera = null;
-
 	// Distance between this GameObject and the hands of the player
 	private float dist;
 
@@ -45,7 +41,7 @@ public class PickableObject : InteractableObject {
 		switch (active) 
 		{
 		case true: // We picked it up
-			handPosition = mainCamera.transform.position + mainCamera.transform.forward * distanceFromCamera; // Where are the hands at
+			handPosition = Gaze.mainCamera.transform.position + Gaze.mainCamera.transform.forward * distanceFromCamera; // Where are the hands at
 			transform.LookAt (handPosition); // Look at the hands
 			rb.useGravity = false; // Don't use gravity
 		

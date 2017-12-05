@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementGrid : InteractableObject {
+public class MovementNode : InteractableObject {
 
     [Header("Variables")]
     public GameObject player;
