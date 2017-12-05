@@ -1,22 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public bool invertCamera;
+	#region Variables
+	private bool invertCamera = false;
 
-    public float xSensitivity = 1;
-    public float ySensitivity = 1;
+    private float xSensitivity = 1;
+    private float ySensitivity = 1;
 
     private float xRot;
     private float yRot;
+	#endregion
 
+	 //Every frame
     private void Update()
     {
         UpdateCameraTransform();
     }
 
+	// Update the rotation of the Camera
     private void UpdateCameraTransform()
     {
         xRot += Input.GetAxis("Mouse X") * xSensitivity;

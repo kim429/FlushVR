@@ -2,6 +2,7 @@
 
 public abstract class InteractableObject : MonoBehaviour {
 
+	[Header("Variables")]
     [Tooltip("Time needed to activate this component")]
 	public float activationDuration = 4f;
 
@@ -16,18 +17,21 @@ public abstract class InteractableObject : MonoBehaviour {
 
     private GazeMeter gazeMeter;
 
-    public void Start()
+	// When we are enabled
+    public virtual void Start()
     {
         GazeMeter meter = Instantiate(UI.current.gazeMeterPrefab, UI.current.canvas.transform);
         gazeMeter = meter;
         meter.iObject = this;
     }
 
-    public void Update()
+	// Every frame
+    public virtual void Update()
     {
         UpdateGazeMeter();
     }
 
+	// Updates our GazeMeter
     private void UpdateGazeMeter()
     {
         gazeMeter.fillImage.fillAmount = hitDuration / activationDuration;
