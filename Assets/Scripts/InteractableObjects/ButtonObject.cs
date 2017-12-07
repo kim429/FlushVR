@@ -12,8 +12,8 @@ public class ButtonObject : InteractableObject {
 		activationDuration = 1.5F;
 	}
 
-	// Is called from the gaze controls
-	public override void IsActivated ()
+    // Is called from the gaze controls
+    public override void IsActivated ()
 	{
 		if (!isClearButton) {
 			keypad.AddToCombination (character);
