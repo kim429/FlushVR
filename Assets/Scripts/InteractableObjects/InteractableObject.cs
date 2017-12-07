@@ -2,7 +2,7 @@
 
 public abstract class InteractableObject : MonoBehaviour {
 
-	[Header("Variables")]
+	[Header("Interactable Object")]
     [Tooltip("Time needed to activate this component")]
 	public float activationDuration = 4f;
 

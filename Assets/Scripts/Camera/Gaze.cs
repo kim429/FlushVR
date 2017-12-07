@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Gaze : MonoBehaviour {
-	// Static Variables
+	// Static variables
     public static Gaze controller;
     public static Camera mainCamera;
 
@@ -13,10 +13,10 @@ public class Gaze : MonoBehaviour {
     [SerializeField] private float updateRate;
 
 
-    // Private Variables hidden in the inspector
+    // Private variables hidden in the inspector
     private RaycastHit gazeHit;
     private InteractableObject hitObject;
-    private InteractableObject prevObject;
+    private InteractableObject lastObject;
 
     // Is called when the script instance is being loaded
     public void Awake()
@@ -53,7 +53,7 @@ public class Gaze : MonoBehaviour {
         if (Physics.Raycast(transform.position, transform.forward, out gazeHit, gazeRange, gazeMask))
         {
             hitObject = gazeHit.transform.GetComponent<InteractableObject>();
-            prevObject = hitObject;
+            lastObject = hitObject;
         }
         else
         {
@@ -64,7 +64,7 @@ public class Gaze : MonoBehaviour {
 	// Call IsActivated() on the IObject that is being gazed at after the duration
     public void GazeActivate()
     {
-		if (prevObject && IsGazingAt(prevObject))
+		if (lastObject && IsGazingAt(lastObject))
         {
         	hitObject.HitDuration += Time.deltaTime;
             if (hitObject.HitDuration >= hitObject.activationDuration)

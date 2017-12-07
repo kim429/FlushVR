@@ -135,6 +135,11 @@ ModelImporter:
     100254: wcrol_houder_lowpoly1
     100256: wcrol_houder_lowpoly2
     100258: wcrol_houder_lowpoly3
+    100260: Spoelknop
+    100262: Spoelknop1
+    100264: Spoelknop2
+    100266: Spoelknop3
+    100268: Spoelknop4
     400000: Basketbal
     400002: Broodbakje
     400004: d_modellen:pCube1
@@ -265,6 +270,11 @@ ModelImporter:
     400254: wcrol_houder_lowpoly1
     400256: wcrol_houder_lowpoly2
     400258: wcrol_houder_lowpoly3
+    400260: Spoelknop
+    400262: Spoelknop1
+    400264: Spoelknop2
+    400266: Spoelknop3
+    400268: Spoelknop4
     2300000: Basketbal
     2300002: Broodbakje
     2300004: d_modellen:pCylinder3
@@ -371,6 +381,11 @@ ModelImporter:
     2300206: wcrol_houder_lowpoly1
     2300208: wcrol_houder_lowpoly2
     2300210: wcrol_houder_lowpoly3
+    2300212: Spoelknop
+    2300214: Spoelknop1
+    2300216: Spoelknop2
+    2300218: Spoelknop3
+    2300220: Spoelknop4
     3300000: Basketbal
     3300002: Broodbakje
     3300004: d_modellen:pCylinder3
@@ -477,6 +492,11 @@ ModelImporter:
     3300206: wcrol_houder_lowpoly1
     3300208: wcrol_houder_lowpoly2
     3300210: wcrol_houder_lowpoly3
+    3300212: Spoelknop
+    3300214: Spoelknop1
+    3300216: Spoelknop2
+    3300218: Spoelknop3
+    3300220: Spoelknop4
     4300000: Wasbak
     4300002: WC
     4300004: WC_knop
@@ -583,6 +603,11 @@ ModelImporter:
     4300206: pCylinder9
     4300208: Broodbakje
     4300210: Handoek
+    4300212: Spoelknop1
+    4300214: Spoelknop
+    4300216: Spoelknop2
+    4300218: Spoelknop3
+    4300220: Spoelknop4
     9500000: //RootNode
   materials:
     importMaterials: 1

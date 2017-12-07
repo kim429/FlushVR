@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 
 public class ButtonObject : InteractableObject {
-	
+    // Private variabled visible in the inspector
+    [SerializeField] private Keypad keypad;
 	[SerializeField] private char character = ' ';
-	[SerializeField] private bool isClear;
+	[SerializeField] private bool isClearButton;
 
 	public override void IsActivated ()
 	{
-		if (!isClear) {
-			CombinationPuzzle.AddToCombination (character);
+		if (!isClearButton) {
+			keypad.AddToCombination (character);
 			hitDuration = 0;
 		}
 		else
 		{
-			CombinationPuzzle.ClearCombination ();
+			keypad.ClearCombination ();
 		}
 	}
-
 }

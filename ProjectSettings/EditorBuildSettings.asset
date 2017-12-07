@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Gaze Scene.unity
+  - enabled: 0
+    path: 
     guid: d188c8a72fe31ed41b61d6d942f3477a
+  - enabled: 1
+    path: Assets/Scenes/Main Scene.unity
+    guid: d8a7c740a01228b4ab05ed8e7f96d43f
