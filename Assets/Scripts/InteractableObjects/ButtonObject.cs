@@ -22,6 +22,7 @@ public class ButtonObject : InteractableObject {
 		else // When we want to clear the combination
 		{
 			CombinationPuzzle.ClearCombination ();
+			hitDuration = 0;
 		}
 	}
 
