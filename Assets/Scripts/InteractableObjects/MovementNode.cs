@@ -18,6 +18,6 @@ public class MovementNode : InteractableObject {
 	// Every 0.1F secondes
 	public override void Update ()
 	{
-		player.transform.Translate(transform.position * speed * Time.deltaTime);
+		player.transform.Translate(transform.position * speed * Time.deltaTime, Space.World);
 	}
 }
