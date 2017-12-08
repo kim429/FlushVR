@@ -1,23 +1,35 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class MovementNode : InteractableObject {
-	#region Variables
-	[Tooltip("Our Player")]
-    [SerializeField]
-	private GameObject player = null;
-	[SerializeField]
-	private float speed = 0.8f;
-	#endregion
+	[Tooltip("Movement Node")]
+    [SerializeField] private GameObject player = null;
+	[SerializeField] private float speed = 0.8f;
+    private bool isTraveling;
+    private float travelLerp;
+    private Vector3 initialPlayerPos;
 
-	// Called from the Gaze script
-   public override void IsActivated()
+    // Called from the Gaze script
+    public override void IsActivated()
     {
-		active = true;
+        base.IsActivated();
+        isTraveling = true;
+        initialPlayerPos = player.transform.position;
     }
 
-	// Every 0.1F secondes
-	public override void Update ()
+    // Every 0.1F secondes
+    public override void Update ()
 	{
-		player.transform.Translate(transform.position * speed * Time.deltaTime, Space.World);
+        base.Update();
+        if (isTraveling)
+        {
+            player.transform.position = Vector3.Lerp(initialPlayerPos, transform.position, travelLerp);
+            travelLerp += Time.deltaTime;
+            if (player.transform.position == transform.position)
+            {
+                isTraveling = false;
+                travelLerp = 0;
+            }
+        }
 	}
 }

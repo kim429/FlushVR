@@ -2,18 +2,21 @@
 
 public abstract class InteractableObject : MonoBehaviour {
 
-	[Header("Interactable Object")]
+    [Header("Interactable Object")]
     [Tooltip("Time needed to activate this component")]
-	public float activationDuration = 4f;
+    public float activationDuration = 4f;
 
-	[Tooltip("How long have we looked at the object")]
-	public float hitDuration;
+    [Tooltip("How long have we looked at the object")]
+    public float hitDuration;
 
-	[Tooltip("This will be set to \"True\" when the \"IsActivated\" is called")]
-	[SerializeField] protected bool active = true;
+    [Tooltip("This will be set to \"True\" when the \"IsActivated\" is called")]
+    [SerializeField] protected bool active = true;
 
-	// This method will be called from the Gaze Interections script
-	public abstract void IsActivated ();
+    // This method will be called from the Gaze Interections script
+    public virtual void IsActivated()
+    {
+        hitDuration = 0;
+    }
 
     private GazeMeter gazeMeter;
 

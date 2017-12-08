@@ -11,7 +11,12 @@ public class ThrowableObject : PickableObject {
 
     [Tooltip("How fast do we want to throw our ball")]
     [SerializeField]
-    private float throwSpeed = 5;
+    private float throwSpeed = 500;
+
+    public override void IsActivated()
+    {
+        base.IsActivated();
+    }
 
     // Update is called once per frame
     protected override void FixedUpdate()
@@ -28,6 +33,5 @@ public class ThrowableObject : PickableObject {
                 active = false; // We won't need to control this object anymore
             }
         }
-
     }
 }

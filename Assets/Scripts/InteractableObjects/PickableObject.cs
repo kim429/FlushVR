@@ -32,7 +32,8 @@ public class PickableObject : InteractableObject
 	// This method is called by the gaze control
 	public override void IsActivated ()
 	{
-		active = true; // We picked it up
+        base.IsActivated();
+        active = true; // We picked it up
 	}
 
     // Deactivate from other script

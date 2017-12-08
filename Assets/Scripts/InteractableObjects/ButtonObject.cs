@@ -15,14 +15,13 @@ public class ButtonObject : InteractableObject {
     // Is called from the gaze controls
     public override void IsActivated ()
 	{
-		if (!isClearButton) {
+        base.IsActivated();
+        if (!isClearButton) {
 			keypad.AddToCombination (character);
-			hitDuration = 0;
 		}
 		else // When we want to clear the combination
 		{
 			keypad.ClearCombination ();
-			hitDuration = 0;
 		}
 	}
 }
