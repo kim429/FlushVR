@@ -8,13 +8,15 @@ public class Keypad : MonoBehaviour {
     [SerializeField] private Text displayText;
     [SerializeField] private Image displayImage;
 	[SerializeField] private string combination;
-	[SerializeField] private bool unlocked;
+    [SerializeField] private int flashAmount;
+    [SerializeField] private float flashRate;
 
     // Private variables hidden in the inspector
     private string input = "";
+    private bool unlocked;
 
-	// Add a charachter from another script
-	public void AddToCombination (char character)
+    // Add a charachter from another script
+    public void AddToCombination (char character)
 	{
 		Input += character;
         displayText.text = Input;
@@ -50,14 +52,24 @@ public class Keypad : MonoBehaviour {
         if (input == combination)
         {
             unlocked = true;
-            displayImage.color = Color.green;
-            Input = "";
+            StartCoroutine(Completed(Color.green));
         }
         else
         {
             unlocked = false;
-            displayImage.color = Color.red;
-            Input = "";
+            StartCoroutine(Completed(Color.red));
+        }
+    }
+
+    public IEnumerator Completed(Color color)
+    {
+        Input = "";
+        for (int i = 0; i < flashAmount; i++)
+        {
+            displayImage.color = color;
+            yield return new WaitForSeconds(flashRate);
+            displayImage.color = Color.white;
+            yield return new WaitForSeconds(flashRate);
         }
     }
 }
