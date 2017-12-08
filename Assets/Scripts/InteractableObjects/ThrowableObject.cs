@@ -18,6 +18,11 @@ public class ThrowableObject : PickableObject {
         base.IsActivated();
     }
 
+    public override void IsActivated()
+    {
+        base.IsActivated();
+    }
+
     // Update is called once per frame
     protected override void FixedUpdate()
     {
