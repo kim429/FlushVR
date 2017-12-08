@@ -8,15 +8,9 @@ public class ThrowableObject : PickableObject {
     private float maxVelocity = 2;
     private float currentVelocity = 0;
 
-
     [Tooltip("How fast do we want to throw our ball")]
     [SerializeField]
     private float throwSpeed = 500;
-
-    public override void IsActivated()
-    {
-        base.IsActivated();
-    }
 
     public override void IsActivated()
     {
