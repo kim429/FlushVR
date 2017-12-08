@@ -13,6 +13,11 @@ public class ThrowableObject : PickableObject {
     [SerializeField]
     private float throwSpeed = 5;
 
+    public override void IsActivated()
+    {
+        base.IsActivated();
+    }
+
     // Update is called once per frame
     protected override void FixedUpdate()
     {
