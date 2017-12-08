@@ -8,8 +8,12 @@ public class PickableObject : InteractableObject
 	[SerializeField]
 	private float distanceFromCamera = 10f;
 
-	// Distance between this GameObject and the hands of the player
-	private float dist;
+    [SerializeField] protected float range;
+
+    // Distance between this GameObject and the hands of the player
+    protected float dist;
+
+    [SerializeField] private float speed;
 
 	// Where will our hands be
 	protected Vector3 handPosition;
@@ -55,9 +59,16 @@ public class PickableObject : InteractableObject
             dist = Vector3.Distance(transform.position, handPosition); // Distance between this object and the hands of the player
 
             // Are we 2.0F units or further away from the hands
-            if (dist >= 0.2f)
+            if (dist >= 0.2F)
             {
-                rb.velocity = (transform.forward * dist * 4); // Move towards the hands
+                if (dist <= range)
+                {
+                    rb.velocity = (transform.forward * dist * speed); // Move towards the hands
+                }
+                else
+                {
+                    rb.velocity = (transform.forward * speed);
+                }
             }
             else // Are we closer than 0.2F units away from the hands
             {

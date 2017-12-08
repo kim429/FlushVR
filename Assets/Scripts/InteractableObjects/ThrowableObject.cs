@@ -6,8 +6,8 @@ public class ThrowableObject : PickableObject {
     [Tooltip("How fast does the object need to move if we want to throw it")]
     [SerializeField]
     private float maxVelocity = 2;
-
     private float currentVelocity = 0;
+
 
     [Tooltip("How fast do we want to throw our ball")]
     [SerializeField]
@@ -26,11 +26,10 @@ public class ThrowableObject : PickableObject {
         if (active) // Only when this object is active
         {
             currentVelocity = rb.velocity.magnitude; // Velocity x y and z combined
-
-            if (currentVelocity > maxVelocity) // If the object goes faster than the max velocity
+            if (currentVelocity > maxVelocity && dist < range) // If the object goes faster than the max velocity
             {
-                rb.AddForce(rb.transform.forward * throwSpeed); // Add some force to throw harder
                 active = false; // We won't need to control this object anymore
+                rb.AddForce(rb.transform.forward * throwSpeed); // Add some force to throw harder
             }
         }
     }
