@@ -18,14 +18,12 @@ public abstract class InteractableObject : MonoBehaviour {
         hitDuration = 0;
     }
 
-    private GazeMeter gazeMeter;
+    private ActionIndicator indicator;
 
 	// When we are enabled
     public virtual void Start()
     {
-        GazeMeter meter = Instantiate(UI.current.gazeMeterPrefab, UI.current.canvas.transform);
-        gazeMeter = meter;
-        meter.iObject = this;
+        indicator = Instantiate(UI.current.aIndicatorPrefab, transform);
     }
 
 	// Every frame
@@ -37,7 +35,6 @@ public abstract class InteractableObject : MonoBehaviour {
 	// Updates our GazeMeter
     private void UpdateGazeMeter()
     {
-        gazeMeter.fillImage.fillAmount = hitDuration / activationDuration;
         if (!Gaze.controller.IsGazingAt(this))
         {
             hitDuration -= Time.deltaTime * 2;

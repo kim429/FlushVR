@@ -10,7 +10,7 @@ public class UI : MonoBehaviour {
 
     // Public variables
     public Canvas canvas;
-    public GazeMeter gazeMeterPrefab;
+    public ActionIndicator aIndicatorPrefab;
 
     // Is called when the script instance is being loaded
     private void Awake()
