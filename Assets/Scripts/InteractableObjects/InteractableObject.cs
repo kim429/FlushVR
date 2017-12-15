@@ -15,6 +15,7 @@ public abstract class InteractableObject : MonoBehaviour {
     // This method will be called from the Gaze Interections script
     public virtual void IsActivated()
     {
+        active = true;
         hitDuration = 0;
     }
 
@@ -32,6 +33,7 @@ public abstract class InteractableObject : MonoBehaviour {
         UpdateGazeMeter();
     }
 
+    //kevin FIX THIS
 	// Updates our GazeMeter
     private void UpdateGazeMeter()
     {

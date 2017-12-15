@@ -20,14 +20,14 @@ public class ThrowableObject : PickableObject {
     // Update is called once per frame
     protected override void FixedUpdate()
     {
-        base.FixedUpdate(); // Everything the PickableObject script does in the FixedUpdate
+        base.FixedUpdate();                                     // Everything the PickableObject script does in the FixedUpdate
 
-        if (active) // Only when this object is active
+        if (active)                                             // Only when this object is active
         {
-            currentVelocity = rb.velocity.magnitude; // Velocity x y and z combined
-            if (currentVelocity > maxVelocity && dist < range) // If the object goes faster than the max velocity
+            currentVelocity = rb.velocity.magnitude;            // Velocity x y and z combined
+            if (currentVelocity > maxVelocity && dist < range)  // If the object goes faster than the max velocity
             {
-                active = false; // We won't need to control this object anymore
+                active = false;                                 // We won't need to control this object anymore
                 rb.AddForce(rb.transform.forward * throwSpeed); // Add some force to throw harder
             }
         }
