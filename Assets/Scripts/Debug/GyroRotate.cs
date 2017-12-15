@@ -22,9 +22,4 @@ public class GyroRotate : MonoBehaviour
     {
         transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
     }
-
-    void OnGUI()
-    {
-        GUILayout.Label("Gyroscope attitude : " + gyro.attitude);
-    }
 }
