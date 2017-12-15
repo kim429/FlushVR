@@ -11,8 +11,17 @@ public class Gaze : MonoBehaviour {
 	[SerializeField] private LayerMask gazeMask = 8;
     [SerializeField] private float gazeRange = 5F;
     [SerializeField] private float updateRate = 0.1F;
+
+
     [SerializeField] private GameObject reticleCanvas;
     [SerializeField] private float reticleDefaultDistance;
+    [SerializeField] private Image reticleFill;
+
+    [SerializeField] private bool isReticleLerping;
+    [SerializeField] private float reticleLerp;
+    [SerializeField] float prevRetFill;
+    [SerializeField] float retLerpTime;
+
     [SerializeField] private bool mouseControlEnabled;
 
     // Private variables hidden in the inspector
@@ -47,8 +56,10 @@ public class Gaze : MonoBehaviour {
         if (Physics.Raycast(transform.position, transform.forward, out gazeHit, gazeRange, gazeMask))
         {
             hitObject = gazeHit.transform.GetComponent<InteractableObject>();
-            lastObject = hitObject;
             UpdateReticle(true);
+
+            if (hitObject)
+                lastObject = hitObject;
         }
         else
         {
@@ -77,6 +88,36 @@ public class Gaze : MonoBehaviour {
         {
             reticleCanvas.transform.position = gazeHit.point;
             reticleCanvas.transform.localScale = reticleScale * gazeHit.distance;
+
+            if (IsGazing)
+            {
+                if (lastObject && lastObject != hitObject)
+                {
+                    isReticleLerping = true;
+                    reticleLerp = 0;
+                    prevRetFill = lastObject.hitDuration / lastObject.activationDuration;
+                }
+
+                float currentFill = hitObject.hitDuration / hitObject.activationDuration;
+
+                if (!isReticleLerping)
+                {
+                    reticleFill.fillAmount = currentFill;
+                }
+                else
+                {
+                    reticleFill.fillAmount = Mathf.Lerp(prevRetFill, currentFill, reticleLerp);
+                    reticleLerp += Time.deltaTime / retLerpTime;
+                }
+            }
+            else
+            {
+                if (lastObject)
+                {
+                    reticleFill.fillAmount = lastObject.hitDuration / lastObject.activationDuration;
+                }
+            }
+
         }
         else
         {
@@ -85,7 +126,23 @@ public class Gaze : MonoBehaviour {
         }
     }
 
-	// Returns true when the IObject is being looked at
+    // Returns true if the camera is looking at an IObject
+    public bool IsGazing
+    {
+        get
+        {
+            if (hitObject)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    // Returns true when the IObject parameter is being looked at
     public bool IsGazingAt(InteractableObject iObject)
     {
         if (hitObject && hitObject == iObject)
