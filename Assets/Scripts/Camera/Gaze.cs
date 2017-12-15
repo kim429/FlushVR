@@ -99,7 +99,6 @@ public class Gaze : MonoBehaviour {
                 }
 
                 float currentFill = hitObject.hitDuration / hitObject.activationDuration;
-
                 if (!isReticleLerping)
                 {
                     reticleFill.fillAmount = currentFill;
