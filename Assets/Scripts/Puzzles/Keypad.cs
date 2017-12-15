@@ -1,14 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour {
     // Private variables visible in the inspector
+    [Header("UI")]
+    [Tooltip("The Text on the display")]
     [SerializeField] private Text displayText;
+    [Tooltip("The display image")]
     [SerializeField] private Image displayImage;
+    [Header("Settings")]
+    [Tooltip("The right combination")]
 	[SerializeField] private string combination;
+    [Header("Flashing")]
+    [Tooltip("how many times do we want to flash")]
     [SerializeField] private int flashAmount;
+    [Tooltip("How fast doe we want to flash")]
     [SerializeField] private float flashRate;
 
     // Private variables hidden in the inspector
@@ -40,27 +47,30 @@ public class Keypad : MonoBehaviour {
         set
         {
             input = value;
-            if (input.Length >= combination.Length)
+
+            if (input.Length >= combination.Length) // When we have a combination of the correct length
             {
-                CheckCombination();
+                CheckCombination(); // Checks if the combination is correct or not
             }
         }
     }
 
+    // Checks if the combination is correct or not
     public void CheckCombination()
     {
-        if (input == combination)
+        if (input == combination) // Correct combination
         {
             unlocked = true;
             StartCoroutine(Completed(Color.green));
         }
-        else
+        else // Wront combination
         {
             unlocked = false;
             StartCoroutine(Completed(Color.red));
         }
     }
 
+    // Flashes the light
     public IEnumerator Completed(Color color)
     {
         Input = "";
