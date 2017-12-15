@@ -12,8 +12,8 @@ public class Gaze : MonoBehaviour {
     [SerializeField] private float gazeRange = 5F;
     [SerializeField] private float updateRate = 0.1F;
     [SerializeField] private GameObject reticleCanvas;
-    [SerializeField] private Image reticleImage;
     [SerializeField] private float reticleDefaultDistance;
+    [SerializeField] private bool mouseControlEnabled;
 
     // Private variables hidden in the inspector
     private RaycastHit gazeHit;
@@ -27,15 +27,10 @@ public class Gaze : MonoBehaviour {
     {
         controller = this;
         mainCamera = Camera.main;
-        reticleScale = reticleCanvas.transform.localScale;
-        reticleRotation = reticleImage.transform.rotation;
-        reticleDefaultDistance = mainCamera.farClipPlane;
-    }
 
-    // Is called on the frame when a script is enabled just before any of the Update methods is called the first time
-    public void Start()
-    {
-        //StartCoroutine(GazeRayUpdate());
+        reticleScale = reticleCanvas.transform.localScale;
+        reticleRotation = reticleCanvas.transform.rotation;
+        reticleDefaultDistance = mainCamera.farClipPlane;
     }
 
     // Is called every frame, if the MonoBehaviour is enabled
@@ -43,16 +38,7 @@ public class Gaze : MonoBehaviour {
     {
         GazeUpdate();
         GazeRaycast(Time.deltaTime);
-    }
-
-	// Is called at the rate of rateUpdate
-    public IEnumerator GazeRayUpdate()
-    {
-        while (true)
-        {
-            GazeRaycast(updateRate);
-            yield return new WaitForSeconds(updateRate);
-        }
+        MouseControl();
     }
 
 	// Casts a raycast from the camera and sets hitObject
@@ -84,6 +70,7 @@ public class Gaze : MonoBehaviour {
          }
     }
 
+    // Sets the reticle position to the raycast hit point and adjusts the scale
     public void UpdateReticle(bool isRaycasting)
     {
         if (isRaycasting)
@@ -108,6 +95,27 @@ public class Gaze : MonoBehaviour {
         else
         {
             return false;
+        }
+    }
+
+    // Mouse controls for use in editor
+    public void MouseControl()
+    {
+        if (!mouseControlEnabled) return;
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            float xRotation = mainCamera.transform.rotation.eulerAngles.x + -Input.GetAxis("Mouse Y");
+            float yRotation = mainCamera.transform.rotation.eulerAngles.y + Input.GetAxis("Mouse X");
+            mainCamera.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = false;
         }
     }
 }
