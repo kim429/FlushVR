@@ -13,7 +13,7 @@ public class PickableObject : InteractableObject
     // Distance between this GameObject and the hands of the player
     protected float dist;
 
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 1f;
 
 	// Where will our hands be
 	protected Vector3 handPosition;
@@ -47,7 +47,7 @@ public class PickableObject : InteractableObject
     }
 
 	// Grabbing the object
-	void Grabbing ()
+    void Grabbing ()
 	{
         // Did we pick it up or not
         if (active)
