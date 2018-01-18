@@ -22,25 +22,36 @@ public class ActionIndicator : MonoBehaviour {
 
     public IEnumerator IndicatorUpdate()
     {
+        Renderer renderer = transform.parent.GetComponent<Renderer>();
         while (true)
         {
-            if (Vector3.Distance(transform.position, Gaze.mainCamera.transform.position) < activateDistance)
+            if (!renderer) break; 
+
+            if (transform.parent.GetComponent<Renderer>().isVisible)
             {
-                RaycastHit hit;
-                if (Physics.Linecast(transform.position, Gaze.mainCamera.transform.position, out hit) && hit.transform == Gaze.mainCamera.transform)
-                {
-                    transform.GetComponent<Canvas>().enabled = true;
-                }
-                else
-                {
-                    transform.GetComponent<Canvas>().enabled = false;
-                }
+                Indicator();
             }
             else
             {
-                transform.GetComponent<Canvas>().enabled = false;
+                transform.GetComponent<Animator>().SetBool("isVisible", false);
             }
             yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    public void Indicator()
+    {
+        if (Vector3.Distance(transform.position, Gaze.mainCamera.transform.position) < activateDistance)
+        {
+            RaycastHit hit;
+            if (Physics.Linecast(transform.position, Gaze.mainCamera.transform.position, out hit) && hit.transform == Gaze.mainCamera.transform)
+            {
+                transform.GetComponent<Animator>().SetBool("isVisible", true);
+            }
+            else
+            {
+                transform.GetComponent<Animator>().SetBool("isVisible", false);
+            }
         }
     }
 }

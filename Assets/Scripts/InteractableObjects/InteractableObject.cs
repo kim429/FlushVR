@@ -33,7 +33,6 @@ public abstract class InteractableObject : MonoBehaviour {
         UpdateGazeMeter();
     }
 
-    //kevin FIX THIS
 	// Updates our GazeMeter
     private void UpdateGazeMeter()
     {

@@ -5,9 +5,20 @@ public class MovementNode : InteractableObject {
 	[Tooltip("Movement Node")]
     [SerializeField] private GameObject player = null;
 	[SerializeField] private float speed = 0.8f;
+    [SerializeField] private bool isDisabledAtStart;
+
     private bool isTraveling;
     private float travelLerp;
     private Vector3 initialPlayerPos;
+
+    public override void Start()
+    {
+        base.Start();
+        if (isDisabledAtStart)
+        {
+            gameObject.SetActive(false);
+        } 
+    }
 
     // Called from the Gaze script
     public override void IsActivated()

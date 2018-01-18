@@ -12,11 +12,11 @@ public class Gaze : MonoBehaviour {
     [SerializeField] private float gazeRange = 5F;
     [SerializeField] private float updateRate = 0.1F;
 
-
     [SerializeField] private GameObject reticleCanvas;
     [SerializeField] private float reticleDefaultDistance;
     [SerializeField] private Image reticleFill;
 
+    [SerializeField] private Animator reticleAnimator;
     [SerializeField] private bool isReticleLerping;
     [SerializeField] private float reticleLerp;
     [SerializeField] float prevRetFill;
@@ -91,6 +91,8 @@ public class Gaze : MonoBehaviour {
 
             if (IsGazing)
             {
+                reticleAnimator.SetBool("isGazing", true);
+
                 if (lastObject && lastObject != hitObject)
                 {
                     isReticleLerping = true;
@@ -111,6 +113,8 @@ public class Gaze : MonoBehaviour {
             }
             else
             {
+                reticleAnimator.SetBool("isGazing", false);
+
                 if (lastObject)
                 {
                     reticleFill.fillAmount = lastObject.hitDuration / lastObject.activationDuration;
