@@ -91,7 +91,8 @@ public class Gaze : MonoBehaviour {
 
             if (IsGazing)
             {
-                reticleAnimator.SetBool("isGazing", true);
+                if (reticleAnimator)
+                    reticleAnimator.SetBool("isGazing", true);
 
                 if (lastObject && lastObject != hitObject)
                 {
@@ -113,7 +114,8 @@ public class Gaze : MonoBehaviour {
             }
             else
             {
-                reticleAnimator.SetBool("isGazing", false);
+                if (reticleAnimator)
+                    reticleAnimator.SetBool("isGazing", false);
 
                 if (lastObject)
                 {
