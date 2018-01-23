@@ -3,33 +3,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Gaze : MonoBehaviour {
-	// Static variables
+    // Static variables
     public static Gaze controller;
     public static Camera mainCamera;
 
     // Private variables visible in the inspector
-	[SerializeField] private LayerMask gazeMask = 8;
+    [Header("Gaze Settings")]
+    [SerializeField] private LayerMask gazeMask = 8;
     [SerializeField] private float gazeRange = 5F;
     [SerializeField] private float updateRate = 0.1F;
 
+    [Header("Reticle Settings")]
     [SerializeField] private GameObject reticleCanvas;
-    [SerializeField] private float reticleDefaultDistance;
     [SerializeField] private Image reticleFill;
-
     [SerializeField] private Animator reticleAnimator;
-    [SerializeField] private bool isReticleLerping;
-    [SerializeField] private float reticleLerp;
-    [SerializeField] float prevRetFill;
-    [SerializeField] float retLerpTime;
 
+    [Header("Debug Settings")]
     [SerializeField] private bool mouseControlEnabled;
 
     // Private variables hidden in the inspector
     private RaycastHit gazeHit;
     private InteractableObject hitObject;
     private InteractableObject lastObject;
-    private Vector3 reticleScale;
-    private Quaternion reticleRotation;
+    private Vector3 reticleBaseScale;
+    private float reticleBaseDistance;
+    private float reticleLerp;
+    private float prevRetFill;
+    private float retLerpTime;
+    private bool isReticleLerping;
 
     // Is called when the script instance is being loaded
     public void Awake()
@@ -37,9 +38,8 @@ public class Gaze : MonoBehaviour {
         controller = this;
         mainCamera = Camera.main;
 
-        reticleScale = reticleCanvas.transform.localScale;
-        reticleRotation = reticleCanvas.transform.rotation;
-        reticleDefaultDistance = mainCamera.farClipPlane;
+        reticleBaseScale = reticleCanvas.transform.localScale;
+        reticleBaseDistance = Vector3.Distance(mainCamera.transform.position, reticleCanvas.transform.position);
     }
 
     // Is called every frame, if the MonoBehaviour is enabled
@@ -87,7 +87,7 @@ public class Gaze : MonoBehaviour {
         if (isRaycasting)
         {
             reticleCanvas.transform.position = gazeHit.point;
-            reticleCanvas.transform.localScale = reticleScale * gazeHit.distance;
+            reticleCanvas.transform.localScale = gazeHit.distance / reticleBaseDistance * reticleBaseScale;
 
             if (IsGazing)
             {
@@ -122,12 +122,11 @@ public class Gaze : MonoBehaviour {
                     reticleFill.fillAmount = lastObject.hitDuration / lastObject.activationDuration;
                 }
             }
-
         }
         else
         {
-            reticleCanvas.transform.position = mainCamera.transform.position + mainCamera.transform.forward * reticleDefaultDistance;
-            reticleCanvas.transform.localScale = reticleScale * reticleDefaultDistance;
+            reticleCanvas.transform.position = mainCamera.transform.position + mainCamera.transform.forward * reticleBaseDistance;
+            reticleCanvas.transform.localScale = reticleBaseScale * reticleBaseDistance;
         }
     }
 
@@ -136,28 +135,14 @@ public class Gaze : MonoBehaviour {
     {
         get
         {
-            if (hitObject)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return hitObject ? true : false;
         }
     }
 
     // Returns true when the IObject parameter is being looked at
     public bool IsGazingAt(InteractableObject iObject)
     {
-        if (hitObject && hitObject == iObject)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return hitObject && hitObject == iObject ? true : false;
     }
 
     // Mouse controls for use in editor
