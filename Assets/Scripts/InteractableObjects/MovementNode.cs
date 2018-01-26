@@ -6,6 +6,7 @@ public class MovementNode : InteractableObject
     [Tooltip("Movement Node")]
     [SerializeField] private GameObject player = null;
     [SerializeField] private float speed = 0.8f;
+    private GameObject previousNode;
 
     private bool isTraveling;
     private float travelLerp;
@@ -18,6 +19,8 @@ public class MovementNode : InteractableObject
 
         if (Gaze.playerSettings.useTeleportMove)
         {
+            Gaze.playerSettings.NewNode(gameObject);
+
             player.transform.position = transform.position;
         }
         else
