@@ -76,6 +76,9 @@ public class Gaze : MonoBehaviour {
     private float retLerpTime;
     private bool isReticleLerping;
 
+    // Public variables
+    public Transform Hands;
+
     // Is called when the script instance is being loaded
     public void Awake()
     {

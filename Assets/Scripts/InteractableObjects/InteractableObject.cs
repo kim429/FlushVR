@@ -19,7 +19,7 @@ public abstract class InteractableObject : MonoBehaviour {
         hitDuration = 0;
     }
 
-    private ActionIndicator indicator;
+    protected ActionIndicator indicator;
 
 	// When we are enabled
     public virtual void Start()
