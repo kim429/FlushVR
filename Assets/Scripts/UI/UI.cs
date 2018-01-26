@@ -17,4 +17,9 @@ public class UI : MonoBehaviour {
     {
         current = this;
     }
+
+    public void ReticleCompleted()
+    {
+        Gaze.controller.reticleAnimator.SetBool("isCompleted", false);
+    }
 }

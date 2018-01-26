@@ -17,6 +17,7 @@ public abstract class InteractableObject : MonoBehaviour {
     {
         active = true;
         hitDuration = 0;
+        Gaze.controller.reticleAnimator.SetBool("isCompleted", true);
     }
 
     private ActionIndicator indicator;
