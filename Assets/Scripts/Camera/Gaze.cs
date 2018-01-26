@@ -6,14 +6,46 @@ using UnityEngine.UI;
 public class PlayerSettings
 {
     public bool useTeleportMove;
+    public GameObject previousNode;
+    bool firstNode = true;
 
     public PlayerSettings()
     {
         useTeleportMove = true;
     }
+
+    public void NewNode(GameObject newNode)
+    {
+        if (previousNode)
+        {
+            if (!previousNode.activeSelf)
+            {
+                previousNode.SetActive(true);
+            }
+
+            previousNode = newNode;
+
+            if (previousNode.activeSelf)
+            {
+                previousNode.SetActive(false);
+            }
+        }
+        else if (firstNode)
+        {
+            previousNode = newNode;
+
+            if (previousNode.activeSelf)
+            {
+                previousNode.SetActive(false);
+            }
+
+            firstNode = false;
+        }
+    }
 }
 
 public class Gaze : MonoBehaviour {
+
     // Static variables
     public static Gaze controller;
     public static Camera mainCamera;
