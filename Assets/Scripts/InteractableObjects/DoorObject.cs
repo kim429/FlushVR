@@ -16,6 +16,14 @@ public class DoorObject : InteractableObject {
         Open();
     }
 
+    public override void Start()
+    {
+        base.Start();
+        if (!advanceNode) return;
+
+        advanceNode.gameObject.SetActive(isOpen);
+    }
+
     // Sets the 'isOpen' bool in the animator to the appropriate value
     public void Open()
     {

@@ -1,11 +1,23 @@
-﻿using System.Collections;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+
+[Serializable]
+public class PlayerSettings
+{
+    public bool useTeleportMove;
+
+    public PlayerSettings()
+    {
+        useTeleportMove = true;
+    }
+}
 
 public class Gaze : MonoBehaviour {
     // Static variables
     public static Gaze controller;
     public static Camera mainCamera;
+    public static PlayerSettings playerSettings = new PlayerSettings();
 
     // Private variables visible in the inspector
     [Header("Gaze Settings")]
