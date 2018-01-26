@@ -51,6 +51,9 @@ public class Gaze : MonoBehaviour {
     public static Camera mainCamera;
     public static PlayerSettings playerSettings = new PlayerSettings();
 
+    // Public variables
+    public Animator reticleAnimator;
+
     // Private variables visible in the inspector
     [Header("Gaze Settings")]
     [SerializeField] private LayerMask gazeMask = 8;
@@ -60,7 +63,6 @@ public class Gaze : MonoBehaviour {
     [Header("Reticle Settings")]
     [SerializeField] private GameObject reticleCanvas;
     [SerializeField] private Image reticleFill;
-    [SerializeField] private Animator reticleAnimator;
 
     [Header("Debug Settings")]
     [SerializeField] private bool mouseControlEnabled;
