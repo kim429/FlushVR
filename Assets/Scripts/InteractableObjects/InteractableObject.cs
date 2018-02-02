@@ -23,7 +23,7 @@ public abstract class InteractableObject : MonoBehaviour {
         Gaze.controller.reticleAnimator.SetBool("isCompleted", true);
     }
 
-    public ActionIndicator indicator;
+    private ActionIndicator indicator;
 
 	// When we are enabled
     public virtual void Start()
