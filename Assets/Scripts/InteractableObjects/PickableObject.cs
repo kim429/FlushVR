@@ -15,8 +15,7 @@ public class PickableObject : InteractableObject
 
     [SerializeField] private float speed = 1f;
 
-	// Where will our hands be
-	protected Vector3 handPosition;
+    [SerializeField] protected Transform hands;
 	// our rigidbody
 	protected Rigidbody rb;
 	#endregion
@@ -27,8 +26,19 @@ public class PickableObject : InteractableObject
 		rb = GetComponent<Rigidbody> (); // Get the Rigidbody component
 	}
 
-	// Every fixed framerate
-	protected virtual void FixedUpdate ()
+    public override void Start()
+    {
+        base.Start();
+        print(Gaze.controller);
+
+        if (Gaze.controller.Hands != null)
+        {
+            hands = Gaze.controller.Hands;
+        }
+    }
+
+    // Every fixed framerate
+    protected virtual void FixedUpdate ()
 	{
 		Grabbing (); // Grabbing the object
 	}
@@ -52,14 +62,13 @@ public class PickableObject : InteractableObject
         // Did we pick it up or not
         if (active)
         {
-            handPosition = Gaze.mainCamera.transform.position + Gaze.mainCamera.transform.forward * distanceFromCamera; // Where are the hands at
-            transform.LookAt(handPosition); // Look at the hands
+            transform.LookAt(hands.position); // Look at the hands
             rb.useGravity = false; // Don't use gravity
 
-            dist = Vector3.Distance(transform.position, handPosition); // Distance between this object and the hands of the player
+            dist = Vector3.Distance(transform.position, hands.position); // Distance between this object and the hands of the player
 
             // Are we 2.0F units or further away from the hands
-            if (dist >= 0.2F)
+            if (dist >= 0.3F)
             {
                 if (dist <= range)
                 {
@@ -74,6 +83,8 @@ public class PickableObject : InteractableObject
             {
                 rb.velocity = new Vector3(0, 0, 0); // Remove the velocity
                 rb.angularVelocity = new Vector3(0, 0, 0); // Remove the angular velocity
+                transform.rotation = hands.rotation;
+                transform.position = hands.position;
             }
         }
         else

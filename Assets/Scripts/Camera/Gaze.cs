@@ -86,6 +86,9 @@ public class Gaze : MonoBehaviour {
     private bool isReticleLerping;
     public List<ActionIndicator> aIndicators = new List<ActionIndicator>();
 
+    // Public variables
+    public Transform Hands;
+
     // Is called when the script instance is being loaded
     private void Awake()
     {
