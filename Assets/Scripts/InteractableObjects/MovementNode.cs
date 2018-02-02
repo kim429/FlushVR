@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MovementNode : InteractableObject
 {
-    [Tooltip("Movement Node")]
+    [Header("Movement Node")]
     [SerializeField] private GameObject player = null;
     [SerializeField] private float speed = 0.8f;
     private GameObject previousNode;
@@ -11,6 +11,7 @@ public class MovementNode : InteractableObject
     private bool isTraveling;
     private float travelLerp;
     private Vector3 initialPlayerPos;
+    private float initialPlayerDistance;
 
     // Called from the Gaze script
     public override void IsActivated()
@@ -27,6 +28,7 @@ public class MovementNode : InteractableObject
         {
             isTraveling = true;
             initialPlayerPos = player.transform.position;
+            initialPlayerDistance = Vector3.Distance(Gaze.mainCamera.transform.position, transform.position);
         }
     }
 
@@ -37,7 +39,7 @@ public class MovementNode : InteractableObject
         if (!isTraveling) return;
 
         player.transform.position = Vector3.Lerp(initialPlayerPos, transform.position, travelLerp);
-        travelLerp += Time.deltaTime;
+        travelLerp += Time.deltaTime / initialPlayerDistance * speed;
         if (player.transform.position == transform.position)
         {
             isTraveling = false;

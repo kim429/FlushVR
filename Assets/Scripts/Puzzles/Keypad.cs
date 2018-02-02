@@ -17,6 +17,7 @@ public class Keypad : MonoBehaviour {
     [SerializeField] private int flashAmount;
     [Tooltip("How fast doe we want to flash")]
     [SerializeField] private float flashRate;
+    [SerializeField] private Animator doorAnim;
 
     // Private variables hidden in the inspector
     private string input = "";
@@ -73,6 +74,7 @@ public class Keypad : MonoBehaviour {
     // Flashes the light
     public IEnumerator Completed(Color color)
     {
+        doorAnim.SetBool("isUnlocked", true);
         Input = "";
         for (int i = 0; i < flashAmount; i++)
         {

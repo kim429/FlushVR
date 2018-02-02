@@ -21,19 +21,19 @@ SpriteAtlas:
     platformSettings: []
     packingParameters:
       serializedVersion: 2
-      padding: 2
+      padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 0
     packedHash:
       serializedVersion: 2
-      Hash: 3d10cc74589bd80b823fa5febdc58321
+      Hash: f79eb6a89a565d7037c14a3e8ddcd0bb
     variantMultiplier: 1
     bindAsDefault: 1
     finalFormat: 4
-    hashString: 3d10cc74589bd80b823fa5febdc58321
-    totalSpriteSurfaceArea: 277500
+    hashString: f79eb6a89a565d7037c14a3e8ddcd0bb
+    totalSpriteSurfaceArea: 579644
     packables:
     - {fileID: 21300000, guid: 56fc3e91b5044054eb01bc2077761106, type: 3}
     - {fileID: 21300000, guid: 8894a91372985fa44997c83fe4f6d55a, type: 3}
@@ -41,25 +41,33 @@ SpriteAtlas:
     - {fileID: 21300000, guid: e74cd5a9efbbbf14bbf449b7abfeab84, type: 3}
     - {fileID: 21300000, guid: 211db2e883d659148b52b5579da17272, type: 3}
     - {fileID: 21300000, guid: 855d149951d94374c8fc8c1fda82f1c1, type: 3}
+    - {fileID: 21300000, guid: 9dc4064d4ce015948a18f90feaa8e622, type: 3}
+    - {fileID: 21300000, guid: d71a9a82092520e4e9d43f7f4a36cb97, type: 3}
     packedSpriteRenderDataKeys:
+    - d71a9a82092520e4e9d43f7f4a36cb97: 21300000
     - 855d149951d94374c8fc8c1fda82f1c1: 21300000
     - e74cd5a9efbbbf14bbf449b7abfeab84: 21300000
     - 211db2e883d659148b52b5579da17272: 21300000
+    - 9dc4064d4ce015948a18f90feaa8e622: 21300000
     - 56fc3e91b5044054eb01bc2077761106: 21300000
     - 8894a91372985fa44997c83fe4f6d55a: 21300000
     - 551403b5ea623f74591fea66a6005657: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: d71a9a82092520e4e9d43f7f4a36cb97, type: 3}
   - {fileID: 21300000, guid: 855d149951d94374c8fc8c1fda82f1c1, type: 3}
   - {fileID: 21300000, guid: e74cd5a9efbbbf14bbf449b7abfeab84, type: 3}
   - {fileID: 21300000, guid: 211db2e883d659148b52b5579da17272, type: 3}
+  - {fileID: 21300000, guid: 9dc4064d4ce015948a18f90feaa8e622, type: 3}
   - {fileID: 21300000, guid: 56fc3e91b5044054eb01bc2077761106, type: 3}
   - {fileID: 21300000, guid: 8894a91372985fa44997c83fe4f6d55a, type: 3}
   - {fileID: 21300000, guid: 551403b5ea623f74591fea66a6005657, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Footsteps
   - Reticle
   - OuterReticle
   - OuterReticleFull
+  - Checkmark
   - GazeFilled
   - GazeUnfilled
   - Grab

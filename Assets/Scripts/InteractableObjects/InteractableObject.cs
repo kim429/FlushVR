@@ -12,6 +12,9 @@ public abstract class InteractableObject : MonoBehaviour {
     [Tooltip("This will be set to \"True\" when the \"IsActivated\" is called")]
     [SerializeField] protected bool active = true;
 
+    [Header("ActionIndicator settings")]
+    public ActionIndicatorSettings indicatorSettings = new ActionIndicatorSettings();
+
     // This method will be called from the Gaze Interections script
     public virtual void IsActivated()
     {
@@ -20,12 +23,13 @@ public abstract class InteractableObject : MonoBehaviour {
         Gaze.controller.reticleAnimator.SetBool("isCompleted", true);
     }
 
-    private ActionIndicator indicator;
+    public ActionIndicator indicator;
 
 	// When we are enabled
     public virtual void Start()
     {
         indicator = Instantiate(UI.current.aIndicatorPrefab, transform);
+        indicator.iObject = this;
     }
 
 	// Every frame

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,12 +8,15 @@ using UnityEngine.UI;
 public class PlayerSettings
 {
     public bool useTeleportMove;
+    public bool useAntiAliasing;
     public GameObject previousNode;
-    bool firstNode = true;
+    bool firstNode;
 
     public PlayerSettings()
     {
         useTeleportMove = true;
+        useAntiAliasing = false;
+        firstNode = true;
     }
 
     public void NewNode(GameObject newNode)
@@ -57,8 +62,10 @@ public class Gaze : MonoBehaviour {
     // Private variables visible in the inspector
     [Header("Gaze Settings")]
     [SerializeField] private LayerMask gazeMask = 8;
-    [SerializeField] private float gazeRange = 5F;
-    [SerializeField] private float updateRate = 0.1F;
+    [SerializeField] private float gazeRange = 200f;
+    [SerializeField] private float updateRate = 0.1f;
+    [SerializeField] private float indicatorRange = 5f;
+    [SerializeField] private float activationRange = 5f;
 
     [Header("Reticle Settings")]
     [SerializeField] private GameObject reticleCanvas;
@@ -77,9 +84,10 @@ public class Gaze : MonoBehaviour {
     private float prevRetFill;
     private float retLerpTime;
     private bool isReticleLerping;
+    public List<ActionIndicator> aIndicators = new List<ActionIndicator>();
 
     // Is called when the script instance is being loaded
-    public void Awake()
+    private void Awake()
     {
         controller = this;
         mainCamera = Camera.main;
@@ -88,11 +96,16 @@ public class Gaze : MonoBehaviour {
         reticleBaseDistance = Vector3.Distance(mainCamera.transform.position, reticleCanvas.transform.position);
     }
 
+    private void Start()
+    {
+        StartCoroutine(IndicatorCheck());
+    }
+
     // Is called every frame, if the MonoBehaviour is enabled
     private void Update()
     {
         GazeUpdate();
-        GazeRaycast(Time.deltaTime);
+        GazeRaycast(3);
         MouseControl();
     }
 
@@ -117,7 +130,7 @@ public class Gaze : MonoBehaviour {
 	// Call IsActivated() on the IObject that is being gazed at after the duration
     public void GazeUpdate()
     {
-		if (lastObject && IsGazingAt(lastObject))
+		if (lastObject && IsGazingAt(lastObject) && gazeHit.distance < activationRange)
         {
         	hitObject.HitDuration += Time.deltaTime;
             if (hitObject.HitDuration >= hitObject.activationDuration)
@@ -125,6 +138,11 @@ public class Gaze : MonoBehaviour {
                 hitObject.IsActivated();
             }
          }
+
+        if (IsGazing)
+        {
+            hitObject.indicator.SetGaze(true);
+        }
     }
 
     // Sets the reticle position to the raycast hit point and adjusts the scale
@@ -209,6 +227,46 @@ public class Gaze : MonoBehaviour {
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = false;
+        }
+    }
+
+    public IEnumerator IndicatorCheck()
+    {
+        while (true)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, indicatorRange);
+            foreach (ActionIndicator indicator in aIndicators)
+            {
+                if (indicator.anim.isActiveAndEnabled)
+                    indicator.anim.SetBool("isVisible", false);
+            }
+            aIndicators.Clear();
+
+            foreach (Collider col in hitColliders)
+            {
+                ActionIndicator indicator = col.GetComponentInChildren<ActionIndicator>();
+                if (indicator)
+                {
+                    aIndicators.Add(indicator);
+                }
+            }
+
+            foreach (ActionIndicator indicator in aIndicators)
+            {
+                RaycastHit hit;
+                if (Physics.Linecast(transform.position, indicator.transform.position, out hit) && hit.transform.gameObject == indicator.iObject.gameObject && !indicator.isGazedAt)
+                {
+                    if (indicator.anim.isActiveAndEnabled)
+                        indicator.anim.SetBool("isVisible", true);
+                }
+                else
+                {
+                    if (indicator.anim.isActiveAndEnabled)
+                        indicator.anim.SetBool("isVisible", false);
+                }
+            }
+
+            yield return new WaitForSeconds(updateRate);
         }
     }
 }
