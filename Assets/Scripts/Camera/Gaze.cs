@@ -11,6 +11,7 @@ public class PlayerSettings
     public bool useAntiAliasing;
     public GameObject previousNode;
     bool firstNode;
+    public PickableObject heldItem;
 
     public PlayerSettings()
     {
@@ -50,22 +51,26 @@ public class PlayerSettings
 }
 
 public class Gaze : MonoBehaviour {
-
     // Static variables
     public static Gaze controller;
     public static Camera mainCamera;
     public static PlayerSettings playerSettings = new PlayerSettings();
 
+    [Header("Gaze Settings")]
     // Public variables
     public Animator reticleAnimator;
+    public Transform hand;
+    public CanvasGroup fadeGroup;
+    public GameObject player;
+    [Space(10)]
 
     // Private variables visible in the inspector
-    [Header("Gaze Settings")]
     [SerializeField] private LayerMask gazeMask = 8;
     [SerializeField] private float gazeRange = 200f;
     [SerializeField] private float updateRate = 0.1f;
     [SerializeField] private float indicatorRange = 5f;
     [SerializeField] private float activationRange = 5f;
+    [SerializeField] private float fadeSpeed = 2f;
 
     [Header("Reticle Settings")]
     [SerializeField] private GameObject reticleCanvas;
@@ -85,9 +90,7 @@ public class Gaze : MonoBehaviour {
     private float retLerpTime;
     private bool isReticleLerping;
     public List<ActionIndicator> aIndicators = new List<ActionIndicator>();
-
-    // Public variables
-    public Transform Hands;
+    private float fadeLerp;
 
     // Is called when the script instance is being loaded
     private void Awake()
@@ -135,10 +138,12 @@ public class Gaze : MonoBehaviour {
     {
 		if (lastObject && IsGazingAt(lastObject) && gazeHit.distance < activationRange)
         {
-        	hitObject.HitDuration += Time.deltaTime;
-            if (hitObject.HitDuration >= hitObject.activationDuration)
-            {
-                hitObject.IsActivated();
+            if (hitObject.ItemRequirement == PickableObjectType.NULL || playerSettings.heldItem && playerSettings.heldItem.type == hitObject.ItemRequirement) {
+                hitObject.HitDuration += Time.deltaTime;
+                if (hitObject.HitDuration >= hitObject.activationDuration)
+                {
+                    hitObject.IsActivated();
+                }
             }
          }
 
@@ -156,7 +161,7 @@ public class Gaze : MonoBehaviour {
             reticleCanvas.transform.position = gazeHit.point;
             reticleCanvas.transform.localScale = gazeHit.distance / reticleBaseDistance * reticleBaseScale;
 
-            if (IsGazing)
+            if (IsGazing && gazeHit.distance < activationRange)
             {
                 if (reticleAnimator)
                     reticleAnimator.SetBool("isGazing", true);
@@ -210,6 +215,30 @@ public class Gaze : MonoBehaviour {
     public bool IsGazingAt(InteractableObject iObject)
     {
         return hitObject && hitObject == iObject ? true : false;
+    }
+
+    private float FadeLerp
+    {
+        get
+        {
+            return fadeLerp;
+        }
+
+        set
+        {
+            if (value > 1)
+            {
+                fadeLerp = 1;
+            }
+            else if (value < 0)
+            {
+                fadeLerp = 0;
+            }
+            else
+            {
+                fadeLerp = value;
+            }
+        }
     }
 
     // Mouse controls for use in editor
@@ -270,6 +299,29 @@ public class Gaze : MonoBehaviour {
             }
 
             yield return new WaitForSeconds(updateRate);
+        }
+    }
+
+    public IEnumerator FadeToBlack(Vector3 position)
+    {
+        bool completed = false;
+        bool isFaded = false;
+        while (!completed)
+        {
+            fadeGroup.alpha = Mathf.Lerp(0, 1, FadeLerp);
+            FadeLerp += isFaded ? -Time.deltaTime * fadeSpeed : Time.deltaTime * fadeSpeed;
+
+            if (FadeLerp == 1)
+            {
+                isFaded = true;
+                player.transform.position = position;
+            }
+
+            if (isFaded && fadeLerp == 0)
+            {
+                completed = true;
+            }
+            yield return new WaitForEndOfFrame();
         }
     }
 }

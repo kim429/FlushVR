@@ -25,6 +25,7 @@ public class Toilet : MonoBehaviour {
     // Dropping the key when we plunge the tiolet
 	void PlungeToilet ()
 	{
-        Instantiate(key, dropPoint.position, dropPoint.rotation); // Spawning the key
+        PickableObject pickableObject = Instantiate(key, dropPoint.position, dropPoint.rotation).GetComponent<PickableObject>(); // Spawning the key
+        pickableObject.OnPickup();
 	}
 }

@@ -5,9 +5,9 @@ public abstract class InteractableObject : MonoBehaviour {
     [Header("Interactable Object")]
     [Tooltip("Time needed to activate this component")]
     public float activationDuration = 4f;
-
-    [Tooltip("How long have we looked at the object")]
-    public float hitDuration;
+    public PickableObjectType ItemRequirement;
+    
+    [HideInInspector] public float hitDuration;
 
     [Tooltip("This will be set to \"True\" when the \"IsActivated\" is called")]
     [SerializeField] protected bool active = true;
@@ -23,7 +23,7 @@ public abstract class InteractableObject : MonoBehaviour {
         Gaze.controller.reticleAnimator.SetBool("isCompleted", true);
     }
 
-    private ActionIndicator indicator;
+    public ActionIndicator indicator;
 
 	// When we are enabled
     public virtual void Start()

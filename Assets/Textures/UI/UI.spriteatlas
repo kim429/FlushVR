@@ -8,42 +8,41 @@ SpriteAtlas:
   m_Name: UI
   m_EditorData:
     textureSettings:
-      serializedVersion: 2
       anisoLevel: 1
       compressionQuality: 50
       maxTextureSize: 2048
       textureCompression: 0
+      colorSpace: 1
       filterMode: 2
       generateMipMaps: 0
       readable: 0
       crunchedCompression: 0
-      sRGB: 0
     platformSettings: []
     packingParameters:
-      serializedVersion: 2
-      padding: 4
+      paddingPower: 2
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 0
     packedHash:
       serializedVersion: 2
-      Hash: f79eb6a89a565d7037c14a3e8ddcd0bb
+      Hash: 2e36ed6fbce0309538a8900a13133d72
     variantMultiplier: 1
     bindAsDefault: 1
     finalFormat: 4
-    hashString: f79eb6a89a565d7037c14a3e8ddcd0bb
-    totalSpriteSurfaceArea: 579644
+    hashString: 2e36ed6fbce0309538a8900a13133d72
+    totalSpriteSurfaceArea: 839288
     packables:
     - {fileID: 21300000, guid: 56fc3e91b5044054eb01bc2077761106, type: 3}
     - {fileID: 21300000, guid: 8894a91372985fa44997c83fe4f6d55a, type: 3}
-    - {fileID: 21300000, guid: 551403b5ea623f74591fea66a6005657, type: 3}
+    - {fileID: 21300000, guid: 9349c28e4ec747746bf1b9735244ef4e, type: 3}
     - {fileID: 21300000, guid: e74cd5a9efbbbf14bbf449b7abfeab84, type: 3}
     - {fileID: 21300000, guid: 211db2e883d659148b52b5579da17272, type: 3}
     - {fileID: 21300000, guid: 855d149951d94374c8fc8c1fda82f1c1, type: 3}
     - {fileID: 21300000, guid: 9dc4064d4ce015948a18f90feaa8e622, type: 3}
     - {fileID: 21300000, guid: d71a9a82092520e4e9d43f7f4a36cb97, type: 3}
     packedSpriteRenderDataKeys:
+    - 9349c28e4ec747746bf1b9735244ef4e: 21300000
     - d71a9a82092520e4e9d43f7f4a36cb97: 21300000
     - 855d149951d94374c8fc8c1fda82f1c1: 21300000
     - e74cd5a9efbbbf14bbf449b7abfeab84: 21300000
@@ -51,9 +50,9 @@ SpriteAtlas:
     - 9dc4064d4ce015948a18f90feaa8e622: 21300000
     - 56fc3e91b5044054eb01bc2077761106: 21300000
     - 8894a91372985fa44997c83fe4f6d55a: 21300000
-    - 551403b5ea623f74591fea66a6005657: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 9349c28e4ec747746bf1b9735244ef4e, type: 3}
   - {fileID: 21300000, guid: d71a9a82092520e4e9d43f7f4a36cb97, type: 3}
   - {fileID: 21300000, guid: 855d149951d94374c8fc8c1fda82f1c1, type: 3}
   - {fileID: 21300000, guid: e74cd5a9efbbbf14bbf449b7abfeab84, type: 3}
@@ -61,8 +60,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9dc4064d4ce015948a18f90feaa8e622, type: 3}
   - {fileID: 21300000, guid: 56fc3e91b5044054eb01bc2077761106, type: 3}
   - {fileID: 21300000, guid: 8894a91372985fa44997c83fe4f6d55a, type: 3}
-  - {fileID: 21300000, guid: 551403b5ea623f74591fea66a6005657, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Door
   - Footsteps
   - Reticle
   - OuterReticle
@@ -70,6 +69,5 @@ SpriteAtlas:
   - Checkmark
   - GazeFilled
   - GazeUnfilled
-  - Grab
   m_Tag: UI
   m_IsVariant: 0

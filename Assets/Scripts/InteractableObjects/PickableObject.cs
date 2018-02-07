@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
 
+public enum PickableObjectType
+{
+    NULL,
+    KEY,
+    PLUNGER
+}
+
 public class PickableObject : InteractableObject
     {
 
@@ -8,14 +15,14 @@ public class PickableObject : InteractableObject
 	[SerializeField]
 	private float distanceFromCamera = 10f;
 
+    public PickableObjectType type;
+
     [SerializeField] protected float range;
 
     // Distance between this GameObject and the hands of the player
     protected float dist;
 
     [SerializeField] private float speed = 1f;
-
-    [SerializeField] protected Transform hands;
 	// our rigidbody
 	protected Rigidbody rb;
 	#endregion
@@ -29,12 +36,6 @@ public class PickableObject : InteractableObject
     public override void Start()
     {
         base.Start();
-        print(Gaze.controller);
-
-        if (Gaze.controller.Hands != null)
-        {
-            hands = Gaze.controller.Hands;
-        }
     }
 
     // Every fixed framerate
@@ -47,8 +48,14 @@ public class PickableObject : InteractableObject
 	public override void IsActivated ()
 	{
         base.IsActivated();
-        active = true; // We picked it up
+        OnPickup();
 	}
+
+    public void OnPickup()
+    {
+        active = true; // We picked it up
+        Gaze.playerSettings.heldItem = this;
+    }
 
     // Deactivate from other script
     public void Deactivate()
@@ -62,10 +69,13 @@ public class PickableObject : InteractableObject
         // Did we pick it up or not
         if (active)
         {
-            transform.LookAt(hands.position); // Look at the hands
+            if (transform.parent != Gaze.controller.player.transform)
+                transform.SetParent(Gaze.controller.player.transform);
+
+            transform.LookAt(Gaze.controller.hand); // Look at the hands
             rb.useGravity = false; // Don't use gravity
 
-            dist = Vector3.Distance(transform.position, hands.position); // Distance between this object and the hands of the player
+            dist = Vector3.Distance(transform.position, Gaze.controller.hand.position); // Distance between this object and the hands of the player
 
             // Are we 2.0F units or further away from the hands
             if (dist >= 0.3F)
@@ -83,8 +93,8 @@ public class PickableObject : InteractableObject
             {
                 rb.velocity = new Vector3(0, 0, 0); // Remove the velocity
                 rb.angularVelocity = new Vector3(0, 0, 0); // Remove the angular velocity
-                transform.rotation = hands.rotation;
-                transform.position = hands.position;
+                transform.rotation = Gaze.controller.hand.rotation;
+                transform.position = Gaze.controller.hand.position;
             }
         }
         else
