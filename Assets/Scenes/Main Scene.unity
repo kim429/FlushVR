@@ -1128,6 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -1318,6 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -1422,6 +1424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -1788,6 +1791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -2018,6 +2022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -2244,6 +2249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -2760,6 +2766,16 @@ Prefab:
       propertyPath: hands
       value: 
       objectReference: {fileID: 40182615}
+    - target: {fileID: 114349784442596602, guid: 2060c0937e868164fba3ee5a9b8229f7,
+        type: 2}
+      propertyPath: ItemRequirement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114349784442596602, guid: 2060c0937e868164fba3ee5a9b8229f7,
+        type: 2}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2060c0937e868164fba3ee5a9b8229f7, type: 2}
   m_IsPrefabParent: 0
@@ -3489,6 +3505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -4824,6 +4841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -5220,6 +5238,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606b3df6eb78e8c40a29bc5d8973f80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activationDuration: 4
+  ItemRequirement: 0
+  hitDuration: 0
+  active: 1
+  indicatorSettings:
+    isContainerVisible: 0
+    indicatorIcon: {fileID: 0}
+  indicator: {fileID: 0}
   key: {fileID: 1858771582419058, guid: 1320f2dbf15f0c74cbedcf3ac7fccbf8, type: 2}
   dropPoint: {fileID: 1170750001}
 --- !u!4 &577990174 stripped
@@ -5337,6 +5363,78 @@ Transform:
   m_Father: {fileID: 1377283139}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &623388129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1771194182511626, guid: 7c4e218df515176409c0f72413007ddb,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 623388130}
+  - component: {fileID: 623388132}
+  - component: {fileID: 623388131}
+  m_Layer: 0
+  m_Name: Cross
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &623388130
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224829559997480442, guid: 7c4e218df515176409c0f72413007ddb,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 623388129}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0019084674}
+  m_LocalScale: {x: 0.1140252, y: 0.1140252, z: 0.1140252}
+  m_Children: []
+  m_Father: {fileID: 1833729224}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.096241415, y: -0.09601998}
+  m_SizeDelta: {x: 300, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &623388131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114863035630042064, guid: 7c4e218df515176409c0f72413007ddb,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 623388129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: bbb3ded958981e2428bb32356de454df, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 7eefdd757c1ec584c8d684784d05a121, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &623388132
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222109546780815594, guid: 7c4e218df515176409c0f72413007ddb,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 623388129}
 --- !u!1 &630152337
 GameObject:
   m_ObjectHideFlags: 0
@@ -5541,6 +5639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 3
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -5548,6 +5647,7 @@ MonoBehaviour:
     indicatorIcon: {fileID: 0}
   indicator: {fileID: 0}
   distanceFromCamera: 2
+  type: 0
   range: 0
   speed: 2
 --- !u!23 &643109562
@@ -5744,6 +5844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -6389,6 +6490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -6554,6 +6656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -6883,6 +6986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -7874,6 +7978,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606b3df6eb78e8c40a29bc5d8973f80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activationDuration: 4
+  ItemRequirement: 2
+  hitDuration: 0
+  active: 1
+  indicatorSettings:
+    isContainerVisible: 0
+    indicatorIcon: {fileID: 0}
+  indicator: {fileID: 0}
   key: {fileID: 1025452206737880, guid: 2dae0a345d136a849815e56f0144b591, type: 2}
   dropPoint: {fileID: 2132395212}
 --- !u!23 &885002816
@@ -8128,6 +8240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -8232,6 +8345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -9577,6 +9691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -9734,6 +9849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -10172,6 +10288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 2
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -10179,6 +10296,7 @@ MonoBehaviour:
     indicatorIcon: {fileID: 0}
   indicator: {fileID: 0}
   distanceFromCamera: 2
+  type: 0
   range: 3
   speed: 3.34
   maxVelocity: 4
@@ -10377,6 +10495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -10704,6 +10823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -12407,6 +12527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -12666,7 +12787,7 @@ Animator:
   m_GameObject: {fileID: 1314868601}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8d9a8ed77b12dee438850d9978575d09, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3baa532ddc91a2548a7695521aaae7a8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12969,6 +13090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -14478,6 +14600,79 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1596227121}
+    - target: {fileID: 114701229802459200, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: reticleColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701229802459200, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: reticleColor.r
+      value: 0.47750866
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701229802459200, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: reticleColor.g
+      value: 0.5958238
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701229802459200, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: reticleColor.b
+      value: 0.9411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701229802459200, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: useColor.r
+      value: 0.9632353
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701229802459200, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: useColor.g
+      value: 0.8869385
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701229802459200, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: useColor.b
+      value: 0.4603698
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701229802459200, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: useColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114197640416698434, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: m_FillAmount
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315780982340942, guid: 7c4e218df515176409c0f72413007ddb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771194182511626, guid: 7c4e218df515176409c0f72413007ddb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224110005820594796, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224110005820594796, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224110005820594796, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224110005820594796, guid: 7c4e218df515176409c0f72413007ddb,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c4e218df515176409c0f72413007ddb, type: 2}
   m_IsPrefabParent: 0
@@ -14577,6 +14772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -15563,6 +15759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -15938,6 +16135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -16320,6 +16518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -17140,6 +17339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -17338,6 +17538,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b1ea0908260c0c4786cb8bb461b796b, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &1833729224 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224110005820594796, guid: 7c4e218df515176409c0f72413007ddb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1494563162}
 --- !u!1 &1862127417
 GameObject:
   m_ObjectHideFlags: 0
@@ -17669,6 +17874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -18004,6 +18210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -18177,13 +18384,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 1
   hitDuration: 0
   active: 1
   indicatorSettings:
     isContainerVisible: 0
     indicatorIcon: {fileID: 0}
   indicator: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 1314868602}
 --- !u!1 &1927756306
 GameObject:
   m_ObjectHideFlags: 0
@@ -18401,6 +18609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -19107,6 +19316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -19501,6 +19711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:
@@ -20028,6 +20239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 4
+  ItemRequirement: 0
   hitDuration: 0
   active: 1
   indicatorSettings:
@@ -20134,6 +20346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDuration: 1
+  ItemRequirement: 0
   hitDuration: 0
   active: 0
   indicatorSettings:

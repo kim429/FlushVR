@@ -26,12 +26,12 @@ SpriteAtlas:
       enableTightPacking: 0
     packedHash:
       serializedVersion: 2
-      Hash: 2e36ed6fbce0309538a8900a13133d72
+      Hash: 51e1d3b6cc290a5efa40475db243d89a
     variantMultiplier: 1
     bindAsDefault: 1
     finalFormat: 4
-    hashString: 2e36ed6fbce0309538a8900a13133d72
-    totalSpriteSurfaceArea: 839288
+    hashString: 51e1d3b6cc290a5efa40475db243d89a
+    totalSpriteSurfaceArea: 1199288
     packables:
     - {fileID: 21300000, guid: 56fc3e91b5044054eb01bc2077761106, type: 3}
     - {fileID: 21300000, guid: 8894a91372985fa44997c83fe4f6d55a, type: 3}
@@ -41,7 +41,9 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 855d149951d94374c8fc8c1fda82f1c1, type: 3}
     - {fileID: 21300000, guid: 9dc4064d4ce015948a18f90feaa8e622, type: 3}
     - {fileID: 21300000, guid: d71a9a82092520e4e9d43f7f4a36cb97, type: 3}
+    - {fileID: 21300000, guid: 7eefdd757c1ec584c8d684784d05a121, type: 3}
     packedSpriteRenderDataKeys:
+    - 7eefdd757c1ec584c8d684784d05a121: 21300000
     - 9349c28e4ec747746bf1b9735244ef4e: 21300000
     - d71a9a82092520e4e9d43f7f4a36cb97: 21300000
     - 855d149951d94374c8fc8c1fda82f1c1: 21300000
@@ -52,6 +54,7 @@ SpriteAtlas:
     - 8894a91372985fa44997c83fe4f6d55a: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 7eefdd757c1ec584c8d684784d05a121, type: 3}
   - {fileID: 21300000, guid: 9349c28e4ec747746bf1b9735244ef4e, type: 3}
   - {fileID: 21300000, guid: d71a9a82092520e4e9d43f7f4a36cb97, type: 3}
   - {fileID: 21300000, guid: 855d149951d94374c8fc8c1fda82f1c1, type: 3}
@@ -61,6 +64,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 56fc3e91b5044054eb01bc2077761106, type: 3}
   - {fileID: 21300000, guid: 8894a91372985fa44997c83fe4f6d55a, type: 3}
   m_PackedSpriteNamesToIndex:
+  - cross
   - Door
   - Footsteps
   - Reticle

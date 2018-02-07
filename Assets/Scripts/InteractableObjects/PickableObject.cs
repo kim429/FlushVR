@@ -54,6 +54,10 @@ public class PickableObject : InteractableObject
     public void OnPickup()
     {
         active = true; // We picked it up
+        if (Gaze.playerSettings.heldItem)
+        {
+            Gaze.playerSettings.heldItem.Deactivate();
+        }
         Gaze.playerSettings.heldItem = this;
     }
 
@@ -61,6 +65,7 @@ public class PickableObject : InteractableObject
     public void Deactivate()
     {
         active = false; // We put it down
+        transform.parent = null;
     }
 
 	// Grabbing the object

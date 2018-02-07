@@ -75,6 +75,8 @@ public class Gaze : MonoBehaviour {
     [Header("Reticle Settings")]
     [SerializeField] private GameObject reticleCanvas;
     [SerializeField] private Image reticleFill;
+    [SerializeField] private Color reticleColor;
+    [SerializeField] private Color useColor;
 
     [Header("Debug Settings")]
     [SerializeField] private bool mouseControlEnabled;
@@ -163,8 +165,9 @@ public class Gaze : MonoBehaviour {
 
             if (IsGazing && gazeHit.distance < activationRange)
             {
-                if (reticleAnimator)
-                    reticleAnimator.SetBool("isGazing", true);
+                reticleFill.color = hitObject.ItemRequirement == PickableObjectType.NULL ? reticleColor : useColor;
+
+                reticleAnimator.SetBool("isGazing", true);
 
                 if (lastObject && lastObject != hitObject)
                 {

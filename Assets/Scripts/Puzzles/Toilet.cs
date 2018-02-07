@@ -1,31 +1,33 @@
 ﻿using UnityEngine;
 
-public class Toilet : MonoBehaviour {
+public class Toilet : InteractableObject {
     // Variables
     [Header("Plunging")]
     [Tooltip("The key that will be dropped when we plunge the toilet")]
 	[SerializeField]
 	private GameObject key = null;
+    private bool hasDropped;
 
     [Tooltip("Where do we want to drop the key")]
     [SerializeField]
     private Transform dropPoint = null;
 
     // When something hits us
-	void OnCollisionEnter (Collision other)
-	{
-		if (other.gameObject.name == "Toilet Plunger") // Was it the Toilet plunger that hit us
-		{
-			PlungeToilet (); // Dropping the key
-            Destroy (gameObject.GetComponent<Toilet>()); // Disable the toilet script so that we cant spawn 2 keys
-            other.gameObject.GetComponent<PickableObject>().Deactivate(); // Put down the plunger
-		}
-	}
+    public override void IsActivated()
+    {
+        base.IsActivated();
+        Gaze.playerSettings.heldItem.Deactivate(); // Put down the plunger
+        PlungeToilet(); // Dropping the key
+    }
 
     // Dropping the key when we plunge the tiolet
 	void PlungeToilet ()
 	{
-        PickableObject pickableObject = Instantiate(key, dropPoint.position, dropPoint.rotation).GetComponent<PickableObject>(); // Spawning the key
-        pickableObject.OnPickup();
+        if (!hasDropped)
+        {
+            PickableObject pickableObject = Instantiate(key, dropPoint.position, dropPoint.rotation).GetComponent<PickableObject>(); // Spawning the key
+            pickableObject.OnPickup();
+            hasDropped = true;
+        }
 	}
 }
