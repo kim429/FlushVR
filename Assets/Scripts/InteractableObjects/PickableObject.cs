@@ -4,7 +4,8 @@ public enum PickableObjectType
 {
     NULL,
     KEY,
-    PLUNGER
+    PLUNGER,
+    BALL
 }
 
 public class PickableObject : InteractableObject
@@ -39,17 +40,18 @@ public class PickableObject : InteractableObject
     }
 
     // Every fixed framerate
-    protected virtual void FixedUpdate ()
-	{
-		Grabbing (); // Grabbing the object
-	}
+    public override void Update()
+    {
+        base.Update();
+        Grabbing(); // Grabbing the object
+    }
 
 	// This method is called by the gaze control
 	public override void IsActivated ()
 	{
         base.IsActivated();
         OnPickup();
-	}
+    }
 
     public void OnPickup()
     {

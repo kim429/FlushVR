@@ -18,9 +18,9 @@ public class ThrowableObject : PickableObject {
     }
 
     // Update is called once per frame
-    protected override void FixedUpdate()
+    public override void Update()
     {
-        base.FixedUpdate();                                     // Everything the PickableObject script does in the FixedUpdate
+        base.Update();                                     // Everything the PickableObject script does in the FixedUpdate
 
         if (active)                                             // Only when this object is active
         {

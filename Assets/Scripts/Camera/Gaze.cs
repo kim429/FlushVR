@@ -144,7 +144,7 @@ public class Gaze : MonoBehaviour {
                 hitObject.HitDuration += Time.deltaTime;
                 if (hitObject.HitDuration >= hitObject.activationDuration)
                 {
-                    hitObject.IsActivated();
+                        hitObject.IsActivated();
                 }
             }
          }
