@@ -1,0 +1,235 @@
+fileFormatVersion: 2
+guid: c5c731a5c57c2da4bbff0bafd43c3a12
+timeCreated: 1518097716
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: addon
+    100004: d_modellen:pCube1
+    100006: d_modellen:pCube2
+    100008: d_modellen:pCube3
+    100010: d_modellen:pCube4
+    100012: d_modellen:pCube5
+    100014: d_modellen:pCube6
+    100016: d_modellen:pCube7
+    100018: d_modellen:pCube8
+    100020: d_modellen:transform1
+    100022: d_modellen:transform2
+    100024: d_modellen:transform3
+    100026: d_modellen:transform4
+    100028: d_modellen:transform5
+    100030: d_modellen:transform6
+    100032: d_modellen:transform7
+    100034: d_modellen:transform8
+    100036: deur_en_keypad
+    100038: Fiets
+    100040: Fiets1
+    100042: Fiets2
+    100044: Loopband1
+    100046: Loopband2
+    100048: Loopband3
+    100050: pCube1
+    100052: pCube3
+    100054: pCube6
+    100056: pCube7
+    100058: polySurface6
+    100060: Roeimachine
+    100062: Roeimachine1
+    100064: Roeimachine2
+    100066: Roeimachine3
+    100068: room:pCube4
+    100070: room:pCube5
+    100072: room:pPlane2
+    100074: slippers:group
+    100076: slippers:group1
+    100078: slippers:group2
+    100080: slippers:group3
+    100082: transform1
+    100084: Weights
+    100086: Weights1
+    100088: Weights2
+    100090: Weights3
+    100092: wiel
+    100094: wiel 1
+    100096: wiel 2
+    400000: //RootNode
+    400002: addon
+    400004: d_modellen:pCube1
+    400006: d_modellen:pCube2
+    400008: d_modellen:pCube3
+    400010: d_modellen:pCube4
+    400012: d_modellen:pCube5
+    400014: d_modellen:pCube6
+    400016: d_modellen:pCube7
+    400018: d_modellen:pCube8
+    400020: d_modellen:transform1
+    400022: d_modellen:transform2
+    400024: d_modellen:transform3
+    400026: d_modellen:transform4
+    400028: d_modellen:transform5
+    400030: d_modellen:transform6
+    400032: d_modellen:transform7
+    400034: d_modellen:transform8
+    400036: deur_en_keypad
+    400038: Fiets
+    400040: Fiets1
+    400042: Fiets2
+    400044: Loopband1
+    400046: Loopband2
+    400048: Loopband3
+    400050: pCube1
+    400052: pCube3
+    400054: pCube6
+    400056: pCube7
+    400058: polySurface6
+    400060: Roeimachine
+    400062: Roeimachine1
+    400064: Roeimachine2
+    400066: Roeimachine3
+    400068: room:pCube4
+    400070: room:pCube5
+    400072: room:pPlane2
+    400074: slippers:group
+    400076: slippers:group1
+    400078: slippers:group2
+    400080: slippers:group3
+    400082: transform1
+    400084: Weights
+    400086: Weights1
+    400088: Weights2
+    400090: Weights3
+    400092: wiel
+    400094: wiel 1
+    400096: wiel 2
+    2300000: addon
+    2300002: Fiets
+    2300004: Fiets1
+    2300006: Fiets2
+    2300008: Loopband1
+    2300010: Loopband2
+    2300012: Loopband3
+    2300014: Roeimachine
+    2300016: Roeimachine1
+    2300018: Roeimachine2
+    2300020: Roeimachine3
+    2300022: Weights
+    2300024: Weights1
+    2300026: Weights2
+    2300028: Weights3
+    2300030: wiel
+    2300032: wiel 1
+    2300034: wiel 2
+    3300000: addon
+    3300002: Fiets
+    3300004: Fiets1
+    3300006: Fiets2
+    3300008: Loopband1
+    3300010: Loopband2
+    3300012: Loopband3
+    3300014: Roeimachine
+    3300016: Roeimachine1
+    3300018: Roeimachine2
+    3300020: Roeimachine3
+    3300022: Weights
+    3300024: Weights1
+    3300026: Weights2
+    3300028: Weights3
+    3300030: wiel
+    3300032: wiel 1
+    3300034: wiel 2
+    4300000: addon
+    4300002: Fiets
+    4300004: wiel
+    4300006: Fiets1
+    4300008: wiel
+    4300010: Fiets2
+    4300012: wiel
+    4300014: Roeimachine
+    4300016: Roeimachine1
+    4300018: Roeimachine2
+    4300020: Roeimachine3
+    4300022: Loopband3
+    4300024: Loopband1
+    4300026: Loopband2
+    4300028: Weights
+    4300030: Weights1
+    4300032: Weights2
+    4300034: Weights3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

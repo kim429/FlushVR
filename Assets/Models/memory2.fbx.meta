@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: bdbb0659d3c2a2b43a1a11e7cf886bde
+timeCreated: 1518095115
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Card_Door_Memory_1_2
+    100002: Card_Door_Memory_2_2
+    100004: Card_Key_Memory_1_2
+    100006: Card_Key_Memory_2_2
+    100008: Card_Lock_Memory_1_2
+    100010: Card_Lock_Memory_2_2
+    100012: Card_Plug_Memory_1_2
+    100014: Card_Plug_Memory_2_2
+    100016: Card_Roll_Memory_1_2
+    100018: Card_Roll_Memory_2_2
+    100020: Card_Star_Memory_1_2
+    100022: Card_Star_Memory_2_2
+    100024: //RootNode
+    100026: MemoryBox_down
+    100028: MemoryBox_up
+    400000: Card_Door_Memory_1_2
+    400002: Card_Door_Memory_2_2
+    400004: Card_Key_Memory_1_2
+    400006: Card_Key_Memory_2_2
+    400008: Card_Lock_Memory_1_2
+    400010: Card_Lock_Memory_2_2
+    400012: Card_Plug_Memory_1_2
+    400014: Card_Plug_Memory_2_2
+    400016: Card_Roll_Memory_1_2
+    400018: Card_Roll_Memory_2_2
+    400020: Card_Star_Memory_1_2
+    400022: Card_Star_Memory_2_2
+    400024: //RootNode
+    400026: MemoryBox_down
+    400028: MemoryBox_up
+    2300000: Card_Door_Memory_1_2
+    2300002: Card_Door_Memory_2_2
+    2300004: Card_Key_Memory_1_2
+    2300006: Card_Key_Memory_2_2
+    2300008: Card_Lock_Memory_1_2
+    2300010: Card_Lock_Memory_2_2
+    2300012: Card_Plug_Memory_1_2
+    2300014: Card_Plug_Memory_2_2
+    2300016: Card_Roll_Memory_1_2
+    2300018: Card_Roll_Memory_2_2
+    2300020: Card_Star_Memory_1_2
+    2300022: Card_Star_Memory_2_2
+    2300024: MemoryBox_down
+    2300026: MemoryBox_up
+    3300000: Card_Door_Memory_1_2
+    3300002: Card_Door_Memory_2_2
+    3300004: Card_Key_Memory_1_2
+    3300006: Card_Key_Memory_2_2
+    3300008: Card_Lock_Memory_1_2
+    3300010: Card_Lock_Memory_2_2
+    3300012: Card_Plug_Memory_1_2
+    3300014: Card_Plug_Memory_2_2
+    3300016: Card_Roll_Memory_1_2
+    3300018: Card_Roll_Memory_2_2
+    3300020: Card_Star_Memory_1_2
+    3300022: Card_Star_Memory_2_2
+    3300024: MemoryBox_down
+    3300026: MemoryBox_up
+    4300000: MemoryBox_down
+    4300002: MemoryBox_up
+    4300004: Card_Roll_Memory_2_2
+    4300006: Card_Plug_Memory_2_2
+    4300008: Card_Lock_Memory_2_2
+    4300010: Card_Star_Memory_1_2
+    4300012: Card_Door_Memory_1_2
+    4300014: Card_Key_Memory_1_2
+    4300016: Card_Roll_Memory_1_2
+    4300018: Card_Key_Memory_2_2
+    4300020: Card_Door_Memory_2_2
+    4300022: Card_Star_Memory_2_2
+    4300024: Card_Lock_Memory_1_2
+    4300026: Card_Plug_Memory_1_2
+    7400000: Memory Cards Animatie
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
