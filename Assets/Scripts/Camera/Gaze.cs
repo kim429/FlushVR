@@ -251,7 +251,7 @@ public class Gaze : MonoBehaviour {
         }
     }
 
-    // Mouse controls for use in editor
+    //* Mouse controls for use in editor 
     public void MouseControl()
     {
         if (!mouseControlEnabled) return;
