@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class ThrowableObject : PickableObject {
+public class ThrowableObject : PickableObject
+{
     // Variables
     [Header("Throw settings")]
     [Tooltip("How fast does the object need to move if we want to throw it")]
@@ -12,6 +13,7 @@ public class ThrowableObject : PickableObject {
     [SerializeField]
     private float throwSpeed = 500;
 
+    // Activates the object
     public override void IsActivated()
     {
         base.IsActivated();
@@ -20,7 +22,7 @@ public class ThrowableObject : PickableObject {
     // Update is called once per frame
     public override void Update()
     {
-        base.Update();                                     // Everything the PickableObject script does in the FixedUpdate
+        base.Update();                                          // Everything the PickableObject script does in the FixedUpdate
 
         if (active)                                             // Only when this object is active
         {
