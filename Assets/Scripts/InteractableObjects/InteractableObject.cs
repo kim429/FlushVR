@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public abstract class InteractableObject : MonoBehaviour {
-
+public abstract class InteractableObject : MonoBehaviour
+{   // Interactable object variables
     [Header("Interactable Object")]
     [Tooltip("Time needed to activate this component")]
     public float activationDuration = 4f;

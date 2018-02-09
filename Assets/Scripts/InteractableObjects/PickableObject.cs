@@ -60,6 +60,7 @@ public class PickableObject : InteractableObject
         {
             Gaze.playerSettings.heldItem.Deactivate();
         }
+
         Gaze.playerSettings.heldItem = this;
     }
 
