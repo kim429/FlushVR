@@ -9,6 +9,9 @@ public class MemoryObject : InteractableObject
     public List<MemoryCard> cards = new List<MemoryCard>();
     public List<MemoryCard> unsolvedCards = new List<MemoryCard>();
 
+    [SerializeField] private GameObject grayBox;
+    [SerializeField] private GameObject colorBox;
+
     public override void IsActivated()
     {
         base.IsActivated();
@@ -44,6 +47,14 @@ public class MemoryObject : InteractableObject
                 }
                 cards.Clear();
             }
+
+            if (unsolvedCards.Count == 0)
+            {
+                grayBox.SetActive(false);
+                colorBox.transform.position = grayBox.transform.position;
+                colorBox.SetActive(true);
+            }
+
             yield return new WaitForEndOfFrame();
         }
     }

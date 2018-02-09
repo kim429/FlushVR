@@ -83,7 +83,6 @@ public class Gaze : MonoBehaviour {
 
     // Private variables hidden in the inspector
     private RaycastHit gazeHit;
-    private InteractableObject hitObject;
     private InteractableObject lastObject;
     private Vector3 reticleBaseScale;
     private float reticleBaseDistance;
@@ -93,6 +92,8 @@ public class Gaze : MonoBehaviour {
     private bool isReticleLerping;
     public List<ActionIndicator> aIndicators = new List<ActionIndicator>();
     private float fadeLerp;
+    
+    [HideInInspector] public InteractableObject hitObject;
 
     // Is called when the script instance is being loaded
     private void Awake()
@@ -104,21 +105,22 @@ public class Gaze : MonoBehaviour {
         reticleBaseDistance = Vector3.Distance(mainCamera.transform.position, reticleCanvas.transform.position);
     }
 
+    // Is called on the frame when a script is enabled just before any of the Update methods is called the first time
     private void Start()
     {
         StartCoroutine(IndicatorCheck());
     }
 
-    // Is called every frame, if the MonoBehaviour is enabled
+    // Is called every frame if the MonoBehaviour is enabled
     private void Update()
     {
         GazeUpdate();
-        GazeRaycast(3);
+        GazeRaycast();
         MouseControl();
     }
 
 	// Casts a raycast from the camera and sets hitObject
-    public void GazeRaycast(float elapsedTime)
+    public void GazeRaycast()
     {
         if (Physics.Raycast(transform.position, transform.forward, out gazeHit, gazeRange, gazeMask))
         {
@@ -138,20 +140,15 @@ public class Gaze : MonoBehaviour {
 	// Call IsActivated() on the IObject that is being gazed at after the duration
     public void GazeUpdate()
     {
-		if (lastObject && IsGazingAt(lastObject) && gazeHit.distance < activationRange)
+        if (IsGazing && CanActivate)
         {
-            if (hitObject.ItemRequirement == PickableObjectType.NULL || playerSettings.heldItem && playerSettings.heldItem.type == hitObject.ItemRequirement) {
-                hitObject.HitDuration += Time.deltaTime;
-                if (hitObject.HitDuration >= hitObject.activationDuration)
-                {
-                        hitObject.IsActivated();
-                }
-            }
-         }
-
-        if (IsGazing)
-        {
+            hitObject.HitDuration += Time.deltaTime;
             hitObject.indicator.SetGaze(true);
+
+            if (hitObject.HitDuration >= hitObject.activationDuration)
+            {
+                    hitObject.IsActivated();
+            }
         }
     }
 
@@ -217,7 +214,17 @@ public class Gaze : MonoBehaviour {
     // Returns true when the IObject parameter is being looked at
     public bool IsGazingAt(InteractableObject iObject)
     {
-        return hitObject && hitObject == iObject ? true : false;
+        return hitObject && iObject && hitObject == iObject ? true : false;
+    }
+
+    public bool CanActivate
+    {
+        get
+        {
+            if (gazeHit.distance > activationRange) return false;
+
+            return hitObject.ItemRequirement == PickableObjectType.NULL || playerSettings.heldItem && playerSettings.heldItem.type == hitObject.ItemRequirement ? true : false;
+        }
     }
 
     private float FadeLerp

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Keypad : MonoBehaviour {
     // Private variables visible in the inspector
@@ -83,5 +84,15 @@ public class Keypad : MonoBehaviour {
             displayImage.color = Color.white;
             yield return new WaitForSeconds(flashRate);
         }
+
+        yield return new WaitForSeconds(2f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("End");
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
     }
 }

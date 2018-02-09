@@ -16,7 +16,6 @@ public class LockObject : InteractableObject {
         base.IsActivated();
 
         rb.isKinematic = false;
-        Gaze.playerSettings.heldItem.Deactivate();
 
         if (anim)
         {
