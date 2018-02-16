@@ -25,8 +25,11 @@ public class MovementNode : InteractableObject
         base.Start();
         Renderer rend = GetComponentInChildren<Renderer>();
         if (rend)
+        {
             rend.enabled = false;
+        }
     }
+
 
     // Called from the Gaze script
     public override void IsActivated()
