@@ -1,0 +1,40 @@
+Programmers:
+Jorrit Zeldenthuis
+Kevin van der Bij
+Nino van Aalsum
+Muniru Awal-Umaru
+
+Artists:
+Jan Bosgra
+Iris Brandt
+Sander Ennema
+
+-------------------------
+Scripts
+Gaze : Kevin
+UI : Kevin
+
+Interactable Objects
+
+Jorrit :
+InteractableObject
+PickableObject
+ThrowableObject
+ButtonObject
+
+Kevin :
+DoorObject
+LockObject
+Settings
+
+Nino :
+Inventory
+
+Muniru :
+Movement Node
+
+-------------------------
+Puzzles
+Memory : Jorrit, Muniru en Kevin
+Keypad : Jorrit
+Toilet Plunging : Jorrit en Kevin
